@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LPK Magang Jepang - Yayasan Aruva Bengagaku Mandiri</title>
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-red: #bc002d; 
+            --dark-blue: #1a2a6c;
+            --white: #ffffff;
+            --light-gray: #f4f4f4;
+            --dark-gray: #333;
+            --accent-gold: #d4af37;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden; /* Mencegah scroll horizontal saat sidebar terbuka */
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            height: 85px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Logo Style */
+        .logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            text-decoration: none;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-primary {
+            color: var(--primary-red);
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+
+        .divider {
+            color: #ccc;
+            font-weight: 300;
+            font-size: 1.5rem;
+        }
+
+        .brand-secondary {
+            color: var(--dark-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .logo small {
+            font-size: 0.65rem;
+            color: #777;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Nav Menu Desktop */
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-red);
+        }
+
+        /* Checkbox & Hamburger (Hidden on Desktop) */
+        #menu-toggle {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: var(--dark-blue);
+            border-radius: 2px;
+            transition: 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.pinimg.com/736x/08/60/67/086067476addb6479f7be446d02d2d57.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .btn-cta {
+            background: var(--primary-red);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-cta:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Wavy Divider */
+        .custom-shape-divider-bottom-1715500000 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .custom-shape-divider-bottom-1715500000 svg {
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 80px;
+        }
+
+        .custom-shape-divider-bottom-1715500000 .shape-fill {
+            fill: #FFFFFF;
+        }
+
+        /* Section Styling */
+        section { padding: 80px 10%; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.5rem; color: var(--dark-blue); margin-bottom: 10px; }
+        .section-title .underline { width: 80px; height: 4px; background: var(--primary-red); margin: 0 auto; }
+
+        /* Masonry Grid */
+        .program-grid {
+    display: grid;
+    /* Mengunci 3 kolom di desktop, 1fr memastikan lebar sama rata */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px;
+    width: 100%;
+    max-width: 1100px; /* Membatasi lebar maksimal agar terlihat elegan di layar lebar */
+    margin: 0 auto;    /* Memastikan container grid tepat di tengah */
+}
+        .program-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;      /* Mengikuti lebar kolom grid */
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    height: fit-content; /* Card mengikuti tinggi konten masing-masing */
+}
+
+.program-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+        .program-img {
+    width: 100%;
+    height: 200px; /* Memberikan konsistensi pada area gambar */
+    overflow: hidden;
+}
+
+.program-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Gambar akan terpotong rapi memenuhi area */
+}
+        .program-content { padding: 20px; }
+        .program-content h3 { margin-bottom: 10px; color: var(--dark-blue); }
+
+        /* Mobile View Rules */
+        @media (max-width: 992px) {
+            .hamburger { display: flex; }
+            .program-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 20px;
+    }
+
+            /* Sidebar Menu */
+            nav ul {
+                position: fixed;
+                right: -100%; /* Sembunyi di kanan */
+                top: 0;
+                width: 70%;
+                height: 100vh;
+                background: var(--dark-blue);
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            }
+
+            nav ul li {
+                margin: 20px 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                color: white;
+                font-size: 1.5rem;
+            }
+
+            /* Logika Sidebar Terbuka (Checkbox Checked) */
+            #menu-toggle:checked ~ ul {
+                right: 0;
+            }
+
+            /* Animasi Hamburger ke 'X' */
+            #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+                background: white;
+            }
+            #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+                opacity: 0;
+            }
+            #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+                background: white;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .program-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .program-img {
+        height: 180px;
+    }
+            .hero h1 { font-size: 1.8rem; }
+            .brand-primary { font-size: 1.1rem; }
+            .brand-secondary { font-size: 0.9rem; }
+        }
+        
+        .timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: var(--white);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border-left: 5px solid var(--primary-red);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.step:hover {
+    transform: translateX(10px);
+    background: #fffcfc;
+}
+
+.step-number {
+    background: var(--primary-red);
+    color: white;
+    min-width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Modern & Elegant Footer */
+footer {
+    background-color: #0f172a; /* Navy sangat gelap agar mewah */
+    color: #e2e8f0;
+    padding: 80px 10% 30px;
+    position: relative;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr; /* Layout 4 kolom seimbang */
+    gap: 40px;
+}
+
+.footer-col h4 {
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Garis dekoratif di bawah judul kolom */
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 3px;
+    background: var(--primary-red);
+}
+
+.footer-about p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Efek hover geser sedikit ke kanan */
+.footer-links ul li a:hover {
+    color: var(--white);
+    transform: translateX(8px);
+}
+
+.contact-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.contact-info .icon {
+    color: var(--primary-red);
+    font-weight: bold;
+}
+
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-bottom p {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--primary-red);
+    transform: translateY(-3px);
+}
+
+/* Responsive Footer */
+@media (max-width: 992px) {
+    .footer-container { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+    .footer-container { grid-template-columns: 1fr; }
+    .footer-bottom { justify-content: center; text-align: center; }
+}
+
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">
+            <div class="logo-wrapper">
+                <span class="brand-primary">ARUVA</span>
+                <span class="divider">|</span>
+                <span class="brand-secondary">BENGAGAKU MANDIRI</span>
+            </div>
+            <small>YAYASAN ARUVA</small>
+        </a>
+
+        <input type="checkbox" id="menu-toggle">
+        
+        <label for="menu-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#tentang">Tentang Kami</a></li>
+            <li><a href="#program">Program</a></li>
+            <li><a href="#alur">Alur</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+            <li class="mobile-only"><a href="https://wa.me/yournumber" class="btn-cta">Daftar</a></li>
+        </ul>
+
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>Wujudkan Impianmu ke Jepang</h1>
+        <p>Lembaga Pelatihan Kerja terpercaya untuk membimbing Anda menjadi tenaga kerja profesional di Negeri Sakura.</p>
+        <a href="#alur" class="btn-cta" style="padding: 15px 40px; font-size: 1.1rem; z-index: 5;">Pelajari Caranya</a>
+   
+        <div class="custom-shape-divider-bottom-1715500000">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section id="program" style="background-color: var(--light-gray); padding: 80px 5%;">
+    <div class="section-title">
+        <h2>Program Unggulan</h2>
+        <div class="underline"></div>
+    </div>
+
+    <div class="program-grid">
+        <div class="program-card">
+            <div class="program-img"><img src="https://minori.co.id/wp-content/uploads/2025/09/image-1024x768.png" alt="Konstruksi"></div>
+            <div class="program-content">
+                <h3>Konstruksi</h3>
+                <p>Pembangunan gedung dan infrastruktur di Tokyo dengan standar keamanan tinggi.</p>
+            </div>
+        </div>
+        
+        <div class="program-card">
+            <div class="program-img"><img src="https://www.its.ac.id/news/wp-content/uploads/sites/2/2023/09/dari-kiri-Hamzah-Nur-Azzam-Putra-Nanda-Kusuma-Jemima-Audrey-Natasha-Agung-Tuani-Hartono-Galang-Adi-Saputro-dan-Hans-Dimitri-yang-sedang-jalani-program-magang-di-Jepang.jpeg" alt="Pertanian"></div>
+            <div class="program-content">
+                <h3>Pertanian</h3>
+                <p>Budidaya tanaman di prefektur Nagano yang asri dengan teknologi modern.</p>
+            </div>
+        </div>
+
+        <div class="program-card">
+            <div class="program-img"><img src="https://radarkepahiang.disway.id/upload/fb76f689ead4e7756afe7591a74b5f2a.jpg" alt="Caregiver"></div>
+            <div class="program-content">
+                <h3>Caregiver</h3>
+                <p>Pelayanan lansia di fasilitas modern Jepang bagi lulusan kesehatan.</p>
+            </div>
+        </div>
+
+        </div>
+</section>
+    
+    <section id="alur">
+        <div class="section-title">
+            <h2>Alur Keberangkatan</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="timeline">
+            <div class="step">
+                <span class="step-number">1</span>
+                <div class="step-content">
+                    <strong>Pendaftaran & Seleksi</strong>
+                    <p>Pemeriksaan dokumen administrasi, tes fisik, dan wawancara awal untuk menentukan minat bakat.</p>
+                </div>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <div class="step-content">
+                    <strong>Pelatihan Bahasa & Budaya</strong>
+                    <p>Kursus intensif Bahasa Jepang (N5/N4) serta pengenalan etos kerja "Oshigoto" di asrama.</p>
+                </div>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <div class="step-content">
+                    <strong>Wawancara User (Mensetsu)</strong>
+                    <p>Wawancara langsung (Online/Offline) dengan perwakilan perusahaan (Kumiai) dari Jepang.</p>
+                </div>
+            </div>
+            <div class="step">
+                <span class="step-number">4</span>
+                <div class="step-content">
+                    <strong>Pengurusan COE & Visa</strong>
+                    <p>Proses administrasi legal ke imigrasi Jepang hingga penerbitan visa kerja resmi.</p>
+                </div>
+            </div>
+            <div class="step">
+                <span class="step-number">5</span>
+                <div class="step-content">
+                    <strong>Terbang ke Jepang!</strong>
+                    <p>Pelepasan resmi dan pendampingan keberangkatan menuju bandara internasional di Jepang.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+    <div class="footer-container">
+        <div class="footer-col footer-about">
+            <h4 style="color: var(--white);">Yayasan Aruva</h4>
+            <p>Membangun jembatan masa depan bagi pemuda Indonesia untuk meraih karir profesional di Jepang melalui pelatihan bahasa dan mentalitas yang unggul.</p>
+            <div class="social-links">
+                <a href="#">Fb</a>
+                <a href="#">Ig</a>
+                <a href="#">Tw</a>
+                <a href="#">Yt</a>
+            </div>
+        </div>
+
+        <div class="footer-col footer-links">
+            <h4>Program Kami</h4>
+            <ul>
+                <li><a href="#">Magang Ginou Jisshu</a></li>
+                <li><a href="#">Tokutei Ginou (SSW)</a></li>
+                <li><a href="#">Pelatihan Bahasa Jepang</a></li>
+                <li><a href="#">Persiapan Kaigo</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col footer-links">
+            <h4>Navigasi</h4>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#tentang">Tentang Kami</a></li>
+                <li><a href="#alur">Alur Pendaftaran</a></li>
+                <li><a href="#">Syarat & Ketentuan</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Kontak Resmi</h4>
+            <ul class="contact-info" style="list-style: none;">
+                <li>
+                    <span class="icon">📍</span>
+                    <span>Jl. Sakura Raya No. 45, Kebayoran Baru, Jakarta Selatan</span>
+                </li>
+                <li>
+                    <span class="icon">📞</span>
+                    <span>(021) 555-0123</span>
+                </li>
+                <li>
+                    <span class="icon">📧</span>
+                    <span>admin@aruva-bengagaku.com</span>
+                </li>
+                <li>
+                    <span class="icon">⏰</span>
+                    <span>Senin - Sabtu: 08.00 - 17.00</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 <strong>Yayasan Aruva Bengagaku Mandiri</strong>. Dikembangkan dengan dedikasi.</p>
+        <p>Izin LPK No: 123/SO/DITJEN-BINALATTAS/2026</p>
+    </div>
+</footer>
+
+    </body>
+</html>
