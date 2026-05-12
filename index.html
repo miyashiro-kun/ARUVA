@@ -3,37 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayasan Aruva - LPK Bengagaku Mandiri</title>
+    <title>Yayasan Aruva - LPK Bengagaku Mandiri | Sakura Theme</title>
     <style>
-        /* --- 1. CSS RESET & VARIABLES --- */
+        /* --- 1. CSS RESET & VARIABEL TEMA SAKURA --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Font lebih modern & elegan */
             scroll-behavior: smooth;
         }
 
         :root {
-            --primary-red: #bc002d; 
-            --dark-blue: #1a2a6c;
-            --footer-bg: #0f172a;
+            /* Palet Warna Sakura */
+            --sakura-pink-primary: #ffb7c5; /* Pink Sakura Lembut */
+            --sakura-pink-light: #fff5f7;   /* Pink Sangat Pucat untuk BG */
+            --sakura-red-accent: #d32f2f;   /* Merah Tua Marun (Kesan Jepang Konvensional) */
+            --text-dark: #2c3e50;           /* Biru Tua Sangat Gelap untuk Teks Utama */
+            --text-gray: #7f8c8d;           /* Abu-abu untuk Teks Sekunder */
             --white: #ffffff;
-            --light-gray: #f4f4f4;
-            --text-gray: #64748b;
+            
+            --footer-dark: #212121;         /* Abu-abu Arang untuk Footer Profesional */
         }
 
         body {
-            line-height: 1.6;
-            color: #333;
+            line-height: 1.8;
+            color: var(--text-dark);
             background-color: var(--white);
             overflow-x: hidden;
+            /* Tambahkan kelopak sakura lembut di background body (opsional) */
+            /* background-image: url('gambar_petal_pattern.png'); */
+            /* background-repeat: repeat; */
         }
 
-        /* --- 2. NAVIGATION & SIDEBAR --- */
+        /* --- 2. NAVIGATION (Elegant & Clean) --- */
         nav {
-            background: var(--white);
-            height: 90px;
+            background: rgba(255, 255, 255, 0.95); /* Sedikit transparan */
+            height: 85px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -41,30 +47,41 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 3px solid var(--sakura-pink-primary); /* Garis pink di bawah nav */
         }
 
         .logo { display: flex; flex-direction: column; line-height: 1.1; text-decoration: none; }
         .logo-wrapper { display: flex; align-items: center; gap: 8px; }
-        .brand-primary { color: var(--primary-red); font-weight: 800; font-size: 1.3rem; letter-spacing: 1px; }
-        .divider { color: #ccc; font-weight: 300; font-size: 1.5rem; }
-        .brand-secondary { color: var(--dark-blue); font-weight: 600; font-size: 1rem; }
-        .logo small { font-size: 0.65rem; color: #777; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
+        .brand-primary { color: var(--sakura-red-accent); font-weight: 800; font-size: 1.3rem; letter-spacing: 1px; }
+        .divider { color: #ddd; font-weight: 300; font-size: 1.5rem; }
+        .brand-secondary { color: var(--text-dark); font-weight: 600; font-size: 1rem; }
+        .logo small { font-size: 0.6rem; color: #888; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; margin-top: 2px; }
 
         nav ul { display: flex; list-style: none; align-items: center; }
         nav ul li { margin-left: 25px; }
-        nav ul li a { text-decoration: none; color: var(--dark-blue); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-        nav ul li a:hover { color: var(--primary-red); }
+        nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; transition: 0.3s; position: relative; padding-bottom: 5px;}
+        
+        /* Efek hover garis pink muncul */
+        nav ul li a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--sakura-pink-primary); transition: 0.3s;
+        }
+        nav ul li a:hover { color: var(--sakura-red-accent); }
+        nav ul li a:hover::after { width: 100%; }
 
         #menu-toggle { display: none; }
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1100; }
-        .hamburger span { display: block; width: 28px; height: 3px; background: var(--dark-blue); border-radius: 2px; transition: 0.3s; }
+        .hamburger span { display: block; width: 26px; height: 3px; background: var(--text-dark); border-radius: 2px; transition: 0.3s; }
 
-        /* --- 3. HERO SECTION --- */
+        /* Sembunyikan tombol mobile di desktop (Perbaikan Bug Sebelumnya) */
+        .mobile-only { display: none; }
+
+        /* --- 3. HERO SECTION (Sakura Vibe) --- */
         .hero {
             position: relative;
-            height: 85vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('gambar_header.png');
+            height: 80vh;
+            /* Ganti dengan gambar tema sakura profesional, misal: Gunung Fuji + Sakura */
+            background: linear-gradient(rgba(255, 235, 238, 0.5), rgba(255, 255, 255, 0.8)), url('gambar_hero_sakura.png'); 
             background-size: cover;
             background-position: center;
             display: flex;
@@ -72,26 +89,31 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
+            color: var(--text-dark);
             padding: 0 20px;
         }
 
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
-        .hero p { font-size: 1.2rem; max-width: 750px; margin-bottom: 35px; }
+        .hero h1 { font-size: 3.2rem; margin-bottom: 20px; font-weight: 800; color: var(--sakura-red-accent); text-transform: uppercase; letter-spacing: 2px; text-shadow: 1px 1px 2px rgba(255,255,255,0.8); }
+        .hero p { font-size: 1.25rem; max-width: 700px; margin-bottom: 40px; color: #444; font-weight: 500; }
 
         .btn-cta {
-            background: var(--primary-red);
+            background: var(--sakura-red-accent);
             color: white;
-            padding: 14px 28px;
-            border-radius: 5px;
+            padding: 15px 30px;
+            border-radius: 30px; /* Lebih membulat agar lembut */
             text-decoration: none;
             font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
             transition: 0.3s;
             border: none;
             display: inline-block;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.2);
         }
-        .btn-cta:hover { background: var(--dark-blue); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .btn-cta:hover { background: var(--text-dark); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 
+        /* Wavy Divider (Pink Sakura) */
         .custom-shape-divider-bottom {
             position: absolute;
             bottom: 0;
@@ -100,19 +122,19 @@
             line-height: 0;
             transform: rotate(180deg);
         }
-        .custom-shape-divider-bottom svg { display: block; width: calc(100% + 1.3px); height: 80px; }
-        .custom-shape-divider-bottom .shape-fill { fill: #FFFFFF; }
+        .custom-shape-divider-bottom svg { display: block; width: calc(100% + 1.3px); height: 60px; }
+        .custom-shape-divider-bottom .shape-fill { fill: var(--white); }
 
-        /* --- 4. PROGRAM SECTION --- */
-        section { padding: 90px 10%; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.5rem; color: var(--dark-blue); margin-bottom: 10px; }
-        .section-title .underline { width: 70px; height: 4px; background: var(--primary-red); margin: 0 auto; }
+        /* --- 4. SECTION & PROGRAM CARD (Clean & Elegant) --- */
+        section { padding: 100px 10%; }
+        .section-title { text-align: center; margin-bottom: 70px; }
+        .section-title h2 { font-size: 2.6rem; color: var(--text-dark); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .section-title .underline { width: 60px; height: 5px; background: var(--sakura-pink-primary); margin: 10px auto 0; border-radius: 3px; }
 
         .program-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 35px;
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
@@ -122,36 +144,49 @@
             background: var(--white);
             border-radius: 15px;
             overflow: hidden;
-            border: 1px solid #eee;
+            border: 1px solid #f1f1f1;
             transition: 0.3s;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
         }
-        .program-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .program-img { width: 100%; height: 210px; overflow: hidden; background: #ddd; }
-        .program-img img { width: 100%; height: 100%; object-fit: cover; }
-        .program-content { padding: 25px; }
-        .program-content h3 { color: var(--dark-blue); margin-bottom: 12px; font-size: 1.3rem; }
-        .program-content p { color: #666; font-size: 0.95rem; }
+        .program-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(255, 183, 197, 0.2); border-color: var(--sakura-pink-primary); }
+        .program-img { width: 100%; height: 210px; overflow: hidden; background: #fafafa; }
+        .program-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s;}
+        .program-card:hover .program-img img { transform: scale(1.1); }
+        
+        .program-content { padding: 25px; text-align: center; }
+        .program-content h3 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.3rem; font-weight: 700; }
+        .program-content p { color: var(--text-gray); font-size: 0.95rem; line-height: 1.7; }
 
-        /* --- 5. ALUR / INTERACTIVE STEPPER --- */
-        #alur { background-color: #eef7ff; }
-        .stepper-wrapper { max-width: 1000px; margin: 0 auto; }
+        /* --- 5. ALUR (Interactive Sakura Stepper) --- */
+        #alur { background-color: var(--sakura-pink-light); position: relative; }
+        
+        /* Tambahkan elemen kelopak berguguran lembut di BG */
+        #alur::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('gambar_petal_overlay.png'); /* Gambar transparan kelopak berguguran */
+            background-size: cover; opacity: 0.3; pointer-events: none;
+        }
+
+        .stepper-wrapper { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2;}
 
         .stepper-header {
             display: flex;
             justify-content: space-between;
             position: relative;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
+            padding: 0 20px;
         }
+        /* Garis abu-abu latar belakang */
         .stepper-header::before {
             content: "";
             position: absolute;
-            top: 20px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: #cbd5e1;
+            top: 22px;
+            left: 5%;
+            width: 90%;
+            height: 3px;
+            background: #e0e0e0;
             z-index: 1;
         }
 
@@ -161,109 +196,126 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 120px;
-            cursor: pointer; /* Bisa diklik */
+            width: 130px;
+            cursor: pointer;
         }
 
         .step-circle {
-            width: 42px;
-            height: 42px;
+            width: 45px;
+            height: 45px;
             background: #fff;
-            border: 4px solid #cbd5e1;
+            border: 3px solid #e0e0e0;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            color: #64748b;
-            margin-bottom: 10px;
-            transition: all 0.4s ease;
+            color: var(--text-gray);
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .step-item:hover .step-circle {
-            border-color: var(--primary-red);
-            transform: scale(1.1);
+            border-color: var(--sakura-pink-primary);
+            color: var(--sakura-red-accent);
         }
 
         .step-item.active .step-circle {
-            background: var(--primary-red);
-            border-color: var(--primary-red);
-            color: white;
-            box-shadow: 0 0 15px rgba(188, 0, 45, 0.4);
+            background: var(--white);
+            border-color: var(--sakura-red-accent); /* Aksen merah saat aktif */
+            color: var(--sakura-red-accent);
+            box-shadow: 0 0 15px rgba(211, 47, 47, 0.2);
+            transform: scale(1.1);
         }
 
-        .step-label { font-size: 0.8rem; font-weight: 700; color: var(--dark-blue); text-align: center; text-transform: uppercase; transition: 0.3s; }
-        .step-item.active .step-label { color: var(--primary-red); }
+        .step-label { font-size: 0.8rem; font-weight: 700; color: var(--text-gray); text-align: center; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .step-item.active .step-label { color: var(--sakura-red-accent); }
 
-        /* Detail Card Animation */
+        /* Detail Card */
         .step-detail-card {
             background: white;
-            padding: 45px;
+            padding: 50px;
             border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            box-shadow: 0 15px 40px rgba(255, 183, 197, 0.1);
             text-align: center;
-            min-height: 200px;
-            transition: all 0.5s ease;
+            min-height: 220px;
+            border: 1px solid var(--sakura-pink-primary); /* Border pink tipis */
         }
 
-        .fade-in {
-            animation: fadeInAnim 0.6s ease-in-out;
-        }
+        .fade-in { animation: fadeInAnim 0.6s ease-in-out; }
+        @keyframes fadeInAnim { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeInAnim {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .step-detail-card h3 { font-size: 1.8rem; color: var(--dark-blue); margin-bottom: 15px; }
-        .step-detail-card p { color: #555; max-width: 700px; margin: 0 auto; font-size: 1.05rem; line-height: 1.8; }
+        .step-detail-card h3 { font-size: 1.8rem; color: var(--sakura-red-accent); margin-bottom: 20px; font-weight: 700; }
+        .step-detail-card p { color: var(--text-dark); max-width: 750px; margin: 0 auto; font-size: 1.05rem; line-height: 1.9; }
 
         .mobile-steps { display: none; }
 
-        /* --- 6. FOOTER --- */
-        footer { background-color: var(--footer-bg); color: #cbd5e1; padding: 80px 10% 40px; }
+        /* --- 6. FOOTER (Professional Dark) --- */
+        footer { background-color: var(--footer-dark); color: #bbb; padding: 80px 10% 40px; }
         .footer-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 50px; }
-        .footer-col h4 { color: white; font-size: 1.1rem; margin-bottom: 25px; position: relative; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 35px; height: 3px; background: var(--primary-red); }
+        .footer-col h4 { color: white; font-size: 1.1rem; margin-bottom: 25px; position: relative; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 35px; height: 3px; background: var(--sakura-pink-primary); }
+        
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 15px; }
-        .footer-col ul li a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-        .footer-col ul li a:hover { color: white; padding-left: 8px; }
-        .footer-bottom { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; font-size: 0.85rem; color: #64748b; }
+        .footer-col ul li a { color: #999; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--white); padding-left: 8px; }
+        
+        .contact-info li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; }
+        .contact-info-icon { color: var(--sakura-pink-primary); margin-top: 3px; }
 
-        /* --- 7. RESPONSIVE --- */
+        .footer-bottom { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.03); display: flex; justify-content: space-between; font-size: 0.85rem; color: #777; }
+        .footer-bottom strong { color: #999; }
+
+        /* --- 7. RESPONSIVE DESIGN --- */
         @media (max-width: 1024px) {
             .program-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-container { grid-template-columns: 1fr 1fr; }
+            .hero h1 { font-size: 2.8rem; }
         }
 
         @media (max-width: 768px) {
+            nav { height: 75px; }
+            .brand-primary { font-size: 1.1rem; }
+            .brand-secondary { font-size: 0.9rem; }
             .hamburger { display: flex; }
+            
             nav ul {
                 position: fixed; right: -100%; top: 0; width: 80%; height: 100vh;
-                background: var(--dark-blue); flex-direction: column; justify-content: center;
-                transition: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+                background: var(--text-dark); flex-direction: column; justify-content: center;
+                transition: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); z-index: 1000;
             }
-            nav ul li { margin: 20px 0; }
-            nav ul li a { color: white; font-size: 1.4rem; }
+            nav ul li { margin: 20px 0; margin-left: 0; }
+            nav ul li a { color: var(--white); font-size: 1.3rem; font-weight: 500; }
+            
             #menu-toggle:checked ~ ul { right: 0; }
             #menu-toggle:checked ~ .hamburger span:nth-child(1) { transform: translateY(8px) rotate(45deg); background: white; }
             #menu-toggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; }
             #menu-toggle:checked ~ .hamburger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background: white; }
+            
+            /* Tampilkan tombol mobile & sembunyikan tombol desktop (Perbaikan Bug Sebelumnya) */
+            .mobile-only { display: block; }
             #desktop-cta { display: none; }
 
-            .hero h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.1rem; }
             .program-grid { grid-template-columns: 1fr; }
+            section { padding: 70px 5%; }
 
             /* Stepper Mobile */
             .stepper-header, .step-detail-card { display: none; }
-            .mobile-steps { display: block; }
-            .m-step { background: white; padding: 20px; border-radius: 15px; margin-bottom: 15px; display: flex; gap: 15px; border-left: 5px solid var(--primary-red); }
-            .m-num { background: var(--primary-red); color: white; min-width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+            .mobile-steps { display: block; z-index: 2; position: relative; }
+            .m-step { background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; display: flex; gap: 15px; border-left: 5px solid var(--sakura-red-accent); box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+            .m-num { background: var(--sakura-red-accent); color: white; min-width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem; }
+            .m-text strong { display: block; color: var(--text-dark); margin-bottom: 5px; font-size: 1.1rem; }
+            .m-text p { color: var(--text-gray); font-size: 0.9rem; line-height: 1.7; }
+            
             .footer-container { grid-template-columns: 1fr; gap: 30px; }
             .footer-bottom { flex-direction: column; text-align: center; gap: 15px; }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -284,19 +336,19 @@
 
         <ul>
             <li><a href="#home">Beranda</a></li>
-            <li><a href="#program">Program</a></li>
+            <li><a href="#program">Program Unggulan</a></li>
             <li><a href="#alur">Alur Daftar</a></li>
             <li><a href="#kontak">Kontak</a></li>
-            <li class="mobile-only"><a href="https://wa.me/628123456789" class="btn-cta">Daftar Sekarang</a></li>
+            <li class="mobile-only"><a href="https://wa.me/628123456789" class="btn-cta">Daftar</a></li>
         </ul>
 
         <a href="https://wa.me/628123456789" class="btn-cta" id="desktop-cta">Daftar Sekarang</a>
     </nav>
 
     <section id="home" class="hero">
-        <h1>Wujudkan Impianmu ke Jepang</h1>
-        <p>Lembaga Pelatihan Kerja terpercaya untuk membimbing Anda menjadi tenaga kerja profesional di Negeri Sakura dengan gaji tinggi dan fasilitas terjamin.</p>
-        <a href="#alur" class="btn-cta">Pelajari Caranya</a>
+        <h1>Masa Depanmu di Negeri Sakura</h1>
+        <p>LPK Bengagaku Mandiri membantu pemuda Indonesia meraih karir impian di Jepang melalui pelatihan bahasa dan mentalitas yang unggul.</p>
+        <a href="#alur" class="btn-cta">Mulai Perjalananmu</a>
    
         <div class="custom-shape-divider-bottom">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -310,18 +362,19 @@
             <h2>Program Unggulan</h2>
             <div class="underline"></div>
         </div>
+
         <div class="program-grid">
             <div class="program-card">
-                <div class="program-img"><img src="https://minori.co.id/wp-content/uploads/2025/09/image-1024x768.png" alt="Konstruksi"></div>
-                <div class="program-content"><h3>Konstruksi</h3><p>Pembangunan gedung dan infrastruktur di Tokyo dengan standar keamanan tinggi.</p></div>
+                <div class="program-img"><img src="gambar_program1.png" alt="Konstruksi"></div>
+                <div class="program-content"><h3>Konstruksi</h3><p>Berperan dalam pembangunan infrastruktur modern di kota-kota besar seperti Tokyo dan Osaka.</p></div>
             </div>
             <div class="program-card">
-                <div class="program-img"><img src="https://www.its.ac.id/news/wp-content/uploads/sites/2/2023/09/dari-kiri-Hamzah-Nur-Azzam-Putra-Nanda-Kusuma-Jemima-Audrey-Natasha-Agung-Tuani-Hartono-Galang-Adi-Saputro-dan-Hans-Dimitri-yang-sedang-jalani-program-magang-di-Jepang.jpeg" alt="Pertanian"></div>
-                <div class="program-content"><h3>Pertanian</h3><p>Budidaya tanaman di prefektur Nagano yang asri dengan teknologi modern.</p></div>
+                <div class="program-img"><img src="gambar_program2.png" alt="Pertanian"></div>
+                <div class="program-content"><h3>Pertanian</h3><p>Mempelajari teknologi budidaya tanaman modern di Prefektur Nagano yang asri.</p></div>
             </div>
             <div class="program-card">
-                <div class="program-img"><img src="https://radarkepahiang.disway.id/upload/fb76f689ead4e7756afe7591a74b5f2a.jpg" alt="Caregiver"></div>
-                <div class="program-content"><h3>Caregiver (Kaigo)</h3><p>Pelayanan lansia di fasilitas modern Jepang bagi lulusan kesehatan.</p></div>
+                <div class="program-img"><img src="gambar_program3.png" alt="Caregiver"></div>
+                <div class="program-content"><h3>Caregiver</h3><p>Berdedikasi melayani lansia dengan teknologi dan standar hospitality tinggi khas Jepang.</p></div>
             </div>
         </div>
     </section>
@@ -336,37 +389,52 @@
             <div class="stepper-header">
                 <div class="step-item active" onclick="changeStep(1)">
                     <div class="step-circle">1</div>
-                    <div class="step-label">Daftar</div>
+                    <div class="step-label">Pendaftaran</div>
                 </div>
                 <div class="step-item" onclick="changeStep(2)">
                     <div class="step-circle">2</div>
-                    <div class="step-label">Diklat</div>
+                    <div class="step-label">Pelatihan</div>
                 </div>
                 <div class="step-item" onclick="changeStep(3)">
                     <div class="step-circle">3</div>
-                    <div class="step-label">Mensetsu</div>
+                    <div class="step-label">Wawancara</div>
                 </div>
                 <div class="step-item" onclick="changeStep(4)">
                     <div class="step-circle">4</div>
-                    <div class="step-label">Visa</div>
+                    <div class="step-label">Dokumen</div>
                 </div>
                 <div class="step-item" onclick="changeStep(5)">
                     <div class="step-circle">5</div>
-                    <div class="step-label">Terbang</div>
+                    <div class="step-label">Keberangkatan</div>
                 </div>
             </div>
 
-            <div class="step-detail-card" id="detail-box">
+            <div class="step-detail-card fade-in" id="detail-box">
                 <h3 id="step-title">Langkah 1: Pendaftaran & Seleksi</h3>
-                <p id="step-desc">Cek administrasi, tes fisik, dan wawancara awal untuk menentukan minat dan bakat Anda sebelum masuk ke tahap pelatihan intensif.</p>
+                <p id="step-desc">Tahap awal berupa cek berkas administrasi, tes fisik ringan, dan wawancara minat bakat untuk memastikan kesiapan Anda mengikuti program Diklat.</p>
             </div>
 
             <div class="mobile-steps">
-                <div class="m-step"><div class="m-num">1</div><div class="m-text"><strong>Daftar:</strong> Seleksi berkas dan fisik awal.</div></div>
-                <div class="m-step"><div class="m-num">2</div><div class="m-text"><strong>Diklat:</strong> Pelatihan bahasa Jepang (N5/N4) di asrama.</div></div>
-                <div class="m-step"><div class="m-num">3</div><div class="m-text"><strong>Mensetsu:</strong> Wawancara langsung dengan user dari Jepang.</div></div>
-                <div class="m-step"><div class="m-num">4</div><div class="m-text"><strong>Dokumen:</strong> Pengurusan COE dan Visa kerja resmi.</div></div>
-                <div class="m-step"><div class="m-num">5</div><div class="m-text"><strong>Terbang:</strong> Terbang menuju masa depan di Jepang.</div></div>
+                <div class="m-step">
+                    <div class="m-num">1</div>
+                    <div class="m-text"><strong>Pendaftaran:</strong> Seleksi berkas, tes fisik, dan wawancara awal.</div>
+                </div>
+                <div class="m-step">
+                    <div class="m-num">2</div>
+                    <div class="m-text"><strong>Pelatihan:</strong> Diklat intensif Bahasa Jepang (N5/N4) & Budaya di asrama.</div>
+                </div>
+                <div class="m-step">
+                    <div class="m-num">3</div>
+                    <div class="m-text"><strong>Wawancara:</strong> Mensetsu langsung dengan user/Kumiai dari Jepang.</div>
+                </div>
+                <div class="m-step">
+                    <div class="m-num">4</div>
+                    <div class="m-text"><strong>Dokumen:</strong> Proses Certificate of Eligibility (COE) dan Visa Kerja.</div>
+                </div>
+                <div class="m-step">
+                    <div class="m-num">5</div>
+                    <div class="m-text"><strong>Keberangkatan:</strong> Pelepasan resmi dan terbang menuju Jepang.</div>
+                </div>
             </div>
         </div>
     </section>
@@ -374,10 +442,10 @@
     <footer id="kontak">
         <div class="footer-container">
             <div class="footer-col">
-                <h4>Yayasan Aruva</h4>
-                <p>LPK Bengagaku Mandiri berdedikasi menciptakan SDM berkualitas yang siap bersaing di pasar kerja Jepang.</p>
+                <h4 style="color: var(--sakura-pink-primary);">Yayasan Aruva</h4>
+                <p style="font-size: 0.9rem; color: #999; line-height: 1.8;">LPK Bengagaku Mandiri berdedikasi menciptakan SDM berkualitas, berkarakter, dan siap bersaing di pasar kerja internasional, khususnya Jepang.</p>
             </div>
-            <div class="footer-col">
+            <div class="footer-col footer-links">
                 <h4>Program</h4>
                 <ul>
                     <li><a href="#">Ginou Jisshu (Magang)</a></li>
@@ -385,26 +453,35 @@
                     <li><a href="#">Kursus Bahasa</a></li>
                 </ul>
             </div>
-            <div class="footer-col">
-                <h4>Link</h4>
+            <div class="footer-col footer-links">
+                <h4>Navigasi</h4>
                 <ul>
                     <li><a href="#home">Beranda</a></li>
                     <li><a href="#program">Program</a></li>
-                    <li><a href="#alur">Alur</a></li>
+                    <li><a href="#alur">Alur Daftar</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Kontak</h4>
-                <ul style="font-size: 0.85rem;">
-                    <li>📍 Jl. Sakura No. 45, Jakarta</li>
-                    <li>📞 (021) 555-0123</li>
-                    <li>📧 info@aruva-bengagaku.com</li>
+                <h4>Hubungi Kami</h4>
+                <ul class="contact-info">
+                    <li>
+                        <span class="contact-info-icon">📍</span>
+                        <span>Jl. Sakura No. 45, Kebayoran Baru, Jakarta Selatan</span>
+                    </li>
+                    <li>
+                        <span class="contact-info-icon">📞</span>
+                        <span>(021) 555-0123</span>
+                    </li>
+                    <li>
+                        <span class="contact-info-icon">📧</span>
+                        <span>admin@aruva-bengagaku.com</span>
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Yayasan Aruva Bengagaku Mandiri.</p>
-            <p>Izin LPK No: 123/BINALATTAS/2026</p>
+            <p>&copy; 2026 <strong>Yayasan Aruva Bengagaku Mandiri</strong>. All Rights Reserved.</p>
+            <p>Izin LPK No: 123/DITJEN-BINALATTAS/2026</p>
         </div>
     </footer>
 
@@ -412,34 +489,33 @@
         const stepData = {
             1: {
                 title: "Langkah 1: Pendaftaran & Seleksi",
-                desc: "Cek administrasi, tes fisik, dan wawancara awal untuk menentukan minat dan bakat Anda sebelum masuk ke tahap pelatihan intensif."
+                desc: "Tahap awal berupa cek berkas administrasi, tes fisik ringan, dan wawancara minat bakat untuk memastikan kesiapan Anda mengikuti program Diklat."
             },
             2: {
-                title: "Langkah 2: Pelatihan Bahasa & Budaya",
-                desc: "Peserta akan mengikuti pelatihan intensif Bahasa Jepang (N5/N4) serta pengenalan budaya kerja 'Oshigoto' di asrama selama 3-4 bulan."
+                title: "Langkah 2: Pelatihan Intensif (Diklat)",
+                desc: "Selama 3-4 bulan, Anda akan tinggal di asrama untuk mengikuti kursus intensif Bahasa Jepang (hingga level N5/N4) serta pelatihan mental dan fisik khas Jepang."
             },
             3: {
                 title: "Langkah 3: Wawancara User (Mensetsu)",
-                desc: "Tahap wawancara langsung (Online/Offline) dengan perwakilan perusahaan (Kumiai) dari Jepang untuk menentukan penempatan kerja."
+                desc: "Tahap krusial di mana Anda akan diwawancarai langsung (Online atau Offline) oleh perwakilan perusahaan (Kumiai) dari Jepang yang membutuhkan tenaga kerja."
             },
             4: {
                 title: "Langkah 4: Pengurusan COE & Visa",
-                desc: "Setelah lulus wawancara, tim administrasi akan memproses Certificate of Eligibility (COE) ke imigrasi Jepang hingga penerbitan Visa kerja."
+                desc: "Setelah lulus Mensetsu, tim kami akan mengurus Certificate of Eligibility (COE) ke imigrasi Jepang, yang dilanjutkan dengan penerbitan Visa Kerja resmi Anda."
             },
             5: {
-                title: "Langkah 5: Keberangkatan (Flying)",
-                desc: "Pelepasan resmi dan pendampingan keberangkatan menuju Jepang. Selamat berjuang mewujudkan impian di Negeri Sakura!"
+                title: "Langkah 5: Keberangkatan resmi",
+                desc: "Selamat! Anda akan mengikuti acara pelepasan resmi di LPK, pendampingan ke bandara, dan terbang untuk memulai karir impian Anda di Negeri Sakura."
             }
         };
 
         function changeStep(stepNumber) {
-            // 1. Ambil elemen-elemen
             const items = document.querySelectorAll('.step-item');
             const detailBox = document.getElementById('detail-box');
             const titleElem = document.getElementById('step-title');
             const descElem = document.getElementById('step-desc');
 
-            // 2. Ubah status active pada lingkaran
+            // Ubah status active
             items.forEach((item, index) => {
                 if (index + 1 === stepNumber) {
                     item.classList.add('active');
@@ -448,9 +524,9 @@
                 }
             });
 
-            // 3. Tambahkan animasi fade-out sebentar (opsional) lalu ganti konten
+            // Ganti konten dengan animasi fade-in
             detailBox.classList.remove('fade-in');
-            void detailBox.offsetWidth; // Trigger reflow untuk reset animasi
+            void detailBox.offsetWidth; // Trigger reflow
             
             titleElem.innerText = stepData[stepNumber].title;
             descElem.innerText = stepData[stepNumber].desc;
