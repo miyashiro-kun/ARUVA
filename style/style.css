@@ -154,6 +154,8 @@
     gap: 20px; /* Memberi jarak antar judul, deskripsi, dan tombol */
     max-width: 1800px; /* Agar teks tidak terlalu lebar ke samping */
     padding: 0 20px;
+   margin-top:-20px;
+   margin-bottom:20px;
 }
 
 .hero-content h1 {
