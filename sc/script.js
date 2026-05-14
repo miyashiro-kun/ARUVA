@@ -1,4 +1,4 @@
-const images2 = [
+const xmages2 = [
     'img/gallery/1.jpg',
     'img/gallery/2.jpg',
     'img/gallery/3.jpg'
@@ -10,8 +10,8 @@ const frontFace = document.querySelector('.face.front');
 const nextLayer = document.querySelector('.origami-next');
 
 // Set gambar awal
-frontFace.style.backgroundImage = `url('${images2[0]}')`;
-nextLayer.style.backgroundImage = `url('${images2[1]}')`;
+frontFace.style.backgroundImage = `url('${xmages2[0]}')`;
+nextLayer.style.backgroundImage = `url('${xmages2[1]}')`;
 
 function foldTransition() {
     // 1. Mulai animasi melipat
@@ -19,14 +19,14 @@ function foldTransition() {
 
     setTimeout(() => {
         // 2. Saat kertas sudah tidak terlihat (setelah 1.5 detik)
-        currentIndex = (currentIndex + 1) % images2.length;
-        const futureIndex = (currentIndex + 1) % images2.length;
+        currentIndex = (currentIndex + 1) % xmages2.length;
+        const futureIndex = (currentIndex + 1) % xmages2.length;
 
         // 3. Gambar yang tadi di belakang sekarang pindah ke depan
-        frontFace.style.backgroundImage = `url('${images2[currentIndex]}')`;
+        frontFace.style.backgroundImage = `url('${xmages2[currentIndex]}')`;
         
         // 4. Siapkan gambar berikutnya lagi di layer belakang
-        nextLayer.style.backgroundImage = `url('${images2[futureIndex]}')`;
+        nextLayer.style.backgroundImage = `url('${xmages2[futureIndex]}')`;
 
         // 5. Kembalikan posisi kertas tanpa animasi (instan)
         paper.style.transition = 'none';
@@ -141,7 +141,7 @@ const testimonials = [
     
     // 1. Daftar nama file gambar Anda di folder img/gallery/
     // 1. Data gambar (isi sesuai nama file di folder img/gallery/)
-    const images = [
+    const xmages = [
         { src: '3.jpg', title: 'gallery' },
         { src: '2.jpg', title: 'gallery' },
         { src: '3.jpg', title: 'gallery' },
@@ -153,13 +153,13 @@ const testimonials = [
     ];
     
     let currentIndex = 0;
-    const imagesPerLoad = 4; // Jumlah default yang ditampilkan
+    const xmagesPerLoad = 4; // Jumlah default yang ditampilkan
     const galleryContainer = document.getElementById('dynamic-gallery');
     const loadMoreBtn = document.getElementById('load-more-btn');
     
-    function renderNextImages() {
+    function renderNextxmages() {
         // Ambil potongan array gambar berikutnya
-        const nextBatch = images.slice(currentIndex, currentIndex + imagesPerLoad);
+        const nextBatch = xmages.slice(currentIndex, currentIndex + xmagesPerLoad);
         
         nextBatch.forEach(imgData => {
             const figure = document.createElement('figure');
@@ -189,20 +189,20 @@ const testimonials = [
             setTimeout(() => figure.style.opacity = '1', 10);
         });
     
-        currentIndex += imagesPerLoad;
+        currentIndex += xmagesPerLoad;
     
         // Sembunyikan tombol jika semua gambar sudah ditampilkan
-        if (currentIndex >= images.length) {
+        if (currentIndex >= xmages.length) {
             loadMoreBtn.style.display = 'none';
         }
     }
     
     // Jalankan saat pertama kali halaman dimuat
     document.addEventListener('DOMContentLoaded', () => {
-        renderNextImages();
+        renderNextxmages();
         
         loadMoreBtn.addEventListener('click', () => {
-            renderNextImages();
+            renderNextxmages();
         });
     });
     
