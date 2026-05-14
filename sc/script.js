@@ -1,3 +1,48 @@
+const images = [
+    'https://i.pinimg.com/736x/95/ba/58/95ba58157e56691a09b16e3d19e5ef07.jpg',
+    'https://i.pinimg.com/1200x/bf/61/af/bf61afab90c4d0f3bb5bab17e48e4040.jpg',
+    'https://i.pinimg.com/1200x/01/46/39/014639e3da677d69acbed7bf4ebf8aae.jpg'
+];
+
+let currentIndex = 0;
+const paper = document.querySelector('.origami-paper');
+const frontFace = document.querySelector('.face.front');
+const nextLayer = document.querySelector('.origami-next');
+
+// Set gambar awal
+frontFace.style.backgroundImage = `url('${images[0]}')`;
+nextLayer.style.backgroundImage = `url('${images[1]}')`;
+
+function foldTransition() {
+    // 1. Mulai animasi melipat
+    paper.classList.add('fold');
+
+    setTimeout(() => {
+        // 2. Saat kertas sudah tidak terlihat (setelah 1.5 detik)
+        currentIndex = (currentIndex + 1) % images.length;
+        const futureIndex = (currentIndex + 1) % images.length;
+
+        // 3. Gambar yang tadi di belakang sekarang pindah ke depan
+        frontFace.style.backgroundImage = `url('${images[currentIndex]}')`;
+        
+        // 4. Siapkan gambar berikutnya lagi di layer belakang
+        nextLayer.style.backgroundImage = `url('${images[futureIndex]}')`;
+
+        // 5. Kembalikan posisi kertas tanpa animasi (instan)
+        paper.style.transition = 'none';
+        paper.classList.remove('fold');
+        
+        // Trigger reflow
+        void paper.offsetWidth;
+
+        // 6. Kembalikan transition untuk putaran berikutnya
+        paper.style.transition = 'transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.5s';
+    }, 1500);
+}
+
+// Jalankan setiap 6 detik
+setInterval(foldTransition, 6000);
+
 const testimonials = [
         { name: "Septian Adi", loc: "Nagoya", img: "img/alumni/1.jpg", msg: "Pelatihan bahasa di sini sangat praktis untuk kerja di pabrik Jepang." },
         { name: "Rina Wijaya", loc: "Osaka", img: "img/alumni/2.jpg", msg: "Sensei sangat sabar membimbing sampai saya lulus interview perusahaan." },
