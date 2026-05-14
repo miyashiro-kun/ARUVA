@@ -112,7 +112,7 @@
     /* --- 3. HERO SECTION (Sakura Vibe) --- */
 .hero {
     position: relative;
-    height: 100vh; /* Sesuaikan tinggi agar fullscreen */
+    height: 40vh; /* Sesuaikan tinggi agar fullscreen */
     display: flex;
     flex-direction: column; /* Ini yang membuat konten tersusun vertikal */
     justify-content: center;
