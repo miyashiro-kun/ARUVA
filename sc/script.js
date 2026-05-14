@@ -1,7 +1,7 @@
 const images = [
-    'https://i.pinimg.com/736x/95/ba/58/95ba58157e56691a09b16e3d19e5ef07.jpg',
-    'https://i.pinimg.com/1200x/bf/61/af/bf61afab90c4d0f3bb5bab17e48e4040.jpg',
-    'https://i.pinimg.com/1200x/01/46/39/014639e3da677d69acbed7bf4ebf8aae.jpg'
+    '../image/gallery/1.jpg',
+    '../image/gallery/1.jpg',
+    '../image/gallery/1.jpg'
 ];
 
 let currentIndex = 0;
