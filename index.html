@@ -856,114 +856,139 @@
     /* --- SECTION: BATCH TERBARU --- */
     
     /* Warna khusus untuk membedakan Pagi dan Malam (Opsional) */
-    .batch-card .fa-clock {
-        color: #f1c40f; /* Kuning Matahari */
-    }
-    
-    .batch-card .fa-moon {
-        color: #34495e; /* Biru Malam */
-    }
-    
-    /* Membuat teks jam lebih menonjol */
-    .batch-info span strong {
-        font-size: 1.1rem;
-        color: var(--sakura-red-accent);
-    }
-    
-    .batch-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 30px;
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-    
-    .batch-card {
-        background: var(--white);
-        border-radius: 20px;
-        padding: 30px;
-        position: relative;
-        border: 1px solid var(--sakura-pink-primary);
-        box-shadow: 0 10px 25px rgba(255, 183, 197, 0.1);
-        transition: 0.3s;
-        overflow: hidden;
-    }
-    
-    .batch-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 35px rgba(255, 183, 197, 0.2);
-    }
-    
-    .batch-status {
-        position: absolute;
-        top: 20px;
-        right: -35px;
-        transform: rotate(45deg);
-        padding: 5px 40px;
-        font-size: 0.7rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        color: white;
-        width: 150px;
-        text-align: center;
-    }
-    
-    .status-open { background: #27ae60; }
-    .status-closed { background: #7f8c8d; }
-    
-    .batch-header h3 {
-        color: var(--sakura-red-accent);
-        font-size: 1.5rem;
-        margin-bottom: 5px;
-    }
-    
-    .batch-header p {
-        color: var(--text-gray);
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-        border-bottom: 2px dashed var(--sakura-pink-primary);
-        padding-bottom: 15px;
-    }
-    
-    .batch-body {
-        margin-bottom: 25px;
-    }
-    
-    .batch-info {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        margin-bottom: 12px;
-        color: var(--text-dark);
-        font-size: 0.95rem;
-    }
-    
-    .batch-info i {
-        color: var(--sakura-red-accent);
-        width: 20px;
-    }
-    
-    .btn-batch {
-        display: block;
-        text-align: center;
-        background: var(--sakura-red-accent);
-        color: white;
-        text-decoration: none;
-        padding: 12px;
-        border-radius: 10px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-    
-    .btn-batch:hover {
-        background: var(--text-dark);
-    }
-    
-    .btn-batch.disabled {
-        background: #ecf0f1;
-        color: #bdc3c7;
-        cursor: not-allowed;
-    }
+    /* --- New Batch Design --- */
+.batch-section {
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dekorasi kelopak sakura kecil di background (opsional) */
+.batch-section::before {
+    content: '🌸';
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    opacity: 0.2;
+    font-size: 3rem;
+}
+
+.batch-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 40px auto 0;
+}
+
+.batch-card {
+    background: var(--white);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 380px;
+    padding: 40px 30px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+    border: 1px solid rgba(255, 183, 197, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.batch-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 50px rgba(211, 47, 47, 0.1);
+    border-color: var(--sakura-pink-primary);
+}
+
+.batch-status {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-open {
+    background: #e3fcef;
+    color: #00875a;
+    border: 1px solid #abf5d1;
+}
+
+.batch-header {
+    margin-bottom: 30px;
+    border-bottom: 2px dashed #f0f0f0;
+    padding-bottom: 20px;
+}
+
+.batch-header h3 {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-bottom: 1px;
+}
+
+.batch-header p {
+    color: var(--sakura-red-accent);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.batch-body {
+    margin-bottom: 35px;
+}
+
+.batch-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    color: var(--text-gray);
+}
+
+.batch-info i {
+    width: 35px;
+    height: 35px;
+    background: var(--sakura-pink-light);
+    color: var(--sakura-red-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin-right: 15px;
+    font-size: 1rem;
+}
+
+.batch-info span {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.btn-batch {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background: var(--text-dark);
+    color: var(--white);
+    padding: 16px;
+    border-radius: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-batch:hover {
+    background: var(--sakura-red-accent);
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.3);
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+    .batch-container { gap: 25px; }
+    .batch-card { padding: 30px 20px; }
+}
     
     /* Penyesuaian Mobile */
     @media (max-width: 768px) {
@@ -1088,7 +1113,45 @@
     color: white; text-decoration: none; font-weight: 700; font-size: 0.8rem;
 }
 .lang-checkbox:checked ~ .lang-list { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    
+
+/* --- Efek Transisi Bahasa Typing --- */
+/* --- Efek Transisi Bahasa Masking --- */
+[data-key] {
+    position: relative;
+    display: inline-block;
+    overflow: hidden; /* Penting agar kotak penyapu tidak keluar jalur */
+    vertical-align: bottom;
+}
+
+/* Kotak Penyapu (The Mask) */
+[data-key]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -101%; /* Mulai dari luar kiri */
+    width: 100%;
+    height: 100%;
+    background-color: var(--sakura-red-accent); /* Warna merah aksen Anda */
+    z-index: 1;
+    transition: all 1s;
+}
+
+/* Animasi Masking Bergerak */
+.mask-animate::after {
+    animation: maskSwipe 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes maskSwipe {
+    0% { left: -101%; }
+    50% { left: 0; }        /* Menutup teks sepenuhnya */
+    100% { left: 101%; }    /* Keluar ke arah kanan */
+}
+
+/* Transisi teks agar tidak muncul tiba-tiba saat ditutup */
+.mask-text-hidden {
+    opacity: 0;
+    transition: opacity 0.01s 0.3s; /* Muncul tepat saat tertutup kotak */
+}
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -1254,60 +1317,60 @@
     </div>
   </section>
 
-  <section id="batch">
-    <div class="section-title">
-      <h2 data-key="batch-title">Batch Pendaftaran Terbaru</h2>
-      <div class="underline"></div>
+  <section id="batch" class="batch-section">
+  <div class="section-title">
+    <h2 data-key="batch-title">Batch Pendaftaran Terbaru</h2>
+    <div class="underline"></div>
+  </div>
+
+  <div class="batch-container">
+    <div class="batch-card">
+      <div data-key="batch-status" class="batch-status status-open">Tersedia</div>
+      <div class="batch-header">
+        <h3 data-key="batch-pagi-title">Kelas Pagi</h3>
+        <p data-key="batch-pagi-desc">Program Intensif Harian</p>
+      </div>
+      <div class="batch-body">
+        <div class="batch-info">
+          <i class="fas fa-clock"></i>
+          <span><strong data-key="batch-time-pagi">08:00 - 14:00 WIB</strong></span>
+        </div>
+        <div class="batch-info">
+          <i class="fas fa-calendar-check"></i>
+          <span data-key="batch-days">Senin s/d Jumat</span>
+        </div>
+        <div class="batch-info">
+          <i class="fas fa-graduation-cap"></i>
+          <span data-key="m1">Materi: JLPT N5 - N4, Budaya, Kaiwa</span>
+        </div>
+      </div>
+      <a data-key="dp" href="https://wa.me/628123456789" class="btn-batch">Daftar Kelas Pagi</a>
     </div>
 
-    <div class="batch-container">
-      <div class="batch-card">
-        <div data-key="batch-status" class="batch-status status-open">Tersedia</div>
-        <div class="batch-header">
-          <h3 data-key="batch-pagi-title">Kelas Pagi</h3>
-          <p data-key="batch-pagi-desc">Program Intensif Harian</p>
-        </div>
-        <div class="batch-body">
-          <div class="batch-info">
-            <i class="fas fa-clock"></i>
-            <span><strong data-key="batch-time-pagi">08:00 - 14:00 WIB</strong></span>
-          </div>
-          <div class="batch-info">
-            <i class="fas fa-calendar-check"></i>
-            <span data-key="batch-days">Senin s/d Jumat</span>
-          </div>
-          <div class="batch-info">
-            <i class="fas fa-graduation-cap"></i>
-            <span data-key="m1">Materi: JLPT N5 - N4, Budaya, Kaiwa</span>
-          </div>
-        </div>
-        <a data-key="dp" href="https://wa.me/628123456789" class="btn-batch">Daftar Kelas Pagi</a>
+    <div class="batch-card">
+      <div data-key="batch-status" class="batch-status status-open">Tersedia</div>
+      <div class="batch-header">
+        <h3 data-key="batch-malam-title">Kelas Malam</h3>
+        <p data-key="batch-malam-desc">Program Pekerja & Mahasiswa</p>
       </div>
-
-      <div class="batch-card">
-        <div data-key="batch-status" class="batch-status status-open">Tersedia</div>
-        <div class="batch-header">
-          <h3 data-key="batch-malam-title">Kelas Malam</h3>
-          <p data-key="batch-malam-desc">Program Pekerja & Mahasiswa</p>
+      <div class="batch-body">
+        <div class="batch-info">
+          <i class="fas fa-moon"></i>
+          <span><strong data-key="batch-time-malam">20:00 - 23:00 WIB</strong></span>
         </div>
-        <div class="batch-body">
-          <div class="batch-info">
-            <i class="fas fa-moon"></i>
-            <span><strong data-key="batch-time-malam">20:00 - 23:00 WIB</strong></span>
-          </div>
-          <div class="batch-info">
-            <i class="fas fa-calendar-check"></i>
-            <span data-key="batch-days" >Senin s/d Jumat</span>
-          </div>
-          <div class="batch-info">
-            <i class="fas fa-briefcase"></i>
-            <span data-key="m1">Materi: JLPT N5 - N4, Budaya, Kaiwa</span>
-          </div>
+        <div class="batch-info">
+          <i class="fas fa-calendar-check"></i>
+          <span data-key="batch-days">Senin s/d Jumat</span>
         </div>
-        <a data-key="dm" href="https://wa.me/628123456789" class="btn-batch">Daftar Kelas Malam</a>
+        <div class="batch-info">
+          <i class="fas fa-briefcase"></i>
+          <span data-key="m1">Materi: JLPT N5 - N4, Budaya, Kaiwa</span>
+        </div>
       </div>
+      <a data-key="dm" href="https://wa.me/628123456789" class="btn-batch">Daftar Kelas Malam</a>
     </div>
-  </section>
+  </div>
+</section>
 
   <section style="visibility:hidden;height:0px" id="alur">
     <div class="section-title">
@@ -1740,9 +1803,9 @@
 		  // Program Section
         'program-title': 'Program Unggulan',
         'program-1-title': 'Ikusei Suro',
-		'program-1-desc': 'Program kerja baru Jepang Pengganti Ginou Jisshusei',
+		    'program-1-desc': 'Program kerja baru Jepang Pengganti Ginou Jisshusei',
         'program-2-title': 'Tokutei Ginou',
-		'program-2-desc': 'Bekerja di Jepang bagi tenaga kerja asing yang telah lulus ujian bahasa Jepang dan ujian keterampilan',
+		    'program-2-desc': 'Bekerja di Jepang bagi tenaga kerja asing yang telah lulus ujian bahasa Jepang dan ujian keterampilan',
         'program-3-title': 'Konstruksi',
         'program-3-desc': 'Berperan dalam pembangunan infrastruktur modern di kota-kota besar seperti Tokyo dan Osaka.',
         'program-4-title': 'Pertanian',
@@ -1884,33 +1947,49 @@
     }
 };
 
+// Penampung untuk menghentikan proses ketik yang sedang berjalan
 function changeLang(lang) {
-    // Update teks pada tombol utama FAB
-    const currentLangDisplay = document.getElementById('current-lang');
-    if(currentLangDisplay) currentLangDisplay.innerText = lang;
-
-    // Cari semua elemen yang memiliki atribut data-key
     const elements = document.querySelectorAll('[data-key]');
-    
+    const currentLangDisplay = document.getElementById('current-lang');
+
+    // 1. Update Preferensi
+    if(currentLangDisplay) currentLangDisplay.innerText = lang;
+    localStorage.setItem('selectedLang', lang);
+
     elements.forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (translations[lang] && translations[lang][key]) {
-            // Jika elemen adalah input/textarea, ganti placeholder
-            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                el.placeholder = translations[lang][key];
-            } else {
+        // Reset animasi jika sedang berjalan
+        el.classList.remove('mask-animate');
+        
+        // Trigger reflow agar browser sadar class dihapus
+        void el.offsetWidth; 
+
+        // 2. Mulai Animasi Sapuan
+        el.classList.add('mask-animate');
+
+        // 3. Ganti teks tepat saat kotak berada di tengah (300ms)
+        setTimeout(() => {
+            const key = el.getAttribute('data-key');
+            if (translations[lang] && translations[lang][key]) {
                 el.innerText = translations[lang][key];
             }
-        }
+        }, 300);
+
+        // Bersihkan class setelah animasi selesai (600ms)
+        setTimeout(() => {
+            el.classList.remove('mask-animate');
+        }, 600);
     });
 
-    // Simpan ke localStorage agar bahasa tidak berubah saat refresh
-    localStorage.setItem('selectedLang', lang);
-    
-    // Tutup menu FAB Bahasa
+    // Tutup menu FAB
     const langCheckbox = document.getElementById('lang-checkbox');
     if(langCheckbox) langCheckbox.checked = false;
 }
+
+// Pastikan inisialisasi saat halaman dimuat hanya ada satu
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('selectedLang') || 'ID';
+    changeLang(savedLang);
+});
 
 // Saat halaman dimuat, gunakan bahasa yang terakhir dipilih atau default ke ID
 document.addEventListener('DOMContentLoaded', () => {
@@ -1918,32 +1997,6 @@ document.addEventListener('DOMContentLoaded', () => {
     changeLang(savedLang);
 });
 
-function changeLang(lang) {
-    // 1. Update teks pada tombol FAB
-    document.getElementById('current-lang').innerText = lang;
-
-    // 2. Cari semua elemen yang punya atribut data-key
-    const elements = document.querySelectorAll('[data-key]');
-    
-    elements.forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (translations[lang][key]) {
-            el.innerText = translations[lang][key];
-        }
-    });
-
-    // 3. Simpan pilihan bahasa ke local storage (agar tidak reset saat refresh)
-    localStorage.setItem('selectedLang', lang);
-
-    // 4. Tutup menu FAB
-    document.getElementById('lang-checkbox').checked = false;
-}
-
-// Jalankan bahasa terakhir yang dipilih saat halaman dimuat
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('selectedLang') || 'ID';
-    changeLang(savedLang);
-});
   </Script>
 </body>
 </html>
