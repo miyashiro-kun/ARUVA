@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayasan Aruva - LPK Bengaku Mandiri | Sakura Theme</title>
+    <title>Yayasan Aruva - LPK Bengagaku Mandiri | Sakura Theme</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         /* --- 1. CSS RESET & VARIABEL TEMA SAKURA --- */
@@ -792,11 +792,48 @@ nav ul {
     .gallery-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .gallery-card { height: 160px; }
 }
+/* Container Sakura */
+/* Container tetap sama */
+#sakura-container {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 9999; overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    background: var(--sakura-pink-primary);
+    border-radius: 150% 0 150% 0;
+    opacity: 0.8;
+    /* Gabungan dua animasi: jatuh (fall) dan goyang (sway) */
+    animation: fall linear infinite, sway ease-in-out infinite;
+}
+
+/* Animasi Jatuh Vertikal (Linear agar tetap konsisten ke bawah) */
+@keyframes fall {
+    0% { top: -10%; }
+    100% { top: 110%; }
+}
+
+/* Animasi Ayunan Horizontal (Ini yang memberikan efek 'ease' terkena angin) */
+@keyframes sway {
+    0% { 
+        transform: translateX(0) rotate(0deg); 
+    }
+    50% { 
+        /* Angka 50px bisa acak, memberikan lengkungan halus */
+        transform: translateX(80px) rotate(180deg); 
+    }
+    100% { 
+        transform: translateX(0) rotate(360deg); 
+    }
+}
 
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div id="sakura-container"></div>
 <div class="fab-container">
     <input type="checkbox" id="fab-checkbox" class="fab-checkbox">
     
@@ -825,7 +862,7 @@ nav ul {
             <div class="logo-wrapper">
                 <span class="brand-primary">ARUVA</span>
                 <span class="divider">|</span>
-                <span class="brand-secondary">Bengaku MANDIRI</span>
+                <span class="brand-secondary">BENGAGAKU MANDIRI</span>
             </div>
             <small>YAYASAN ARUVA</small>
         </a>
@@ -849,7 +886,7 @@ nav ul {
 
     <section id="home" class="hero">
         <h1>Masa Depanmu di Negeri Sakura</h1>
-        <p>LPK Bengaku Mandiri membantu pemuda Indonesia meraih karir impian di Jepang melalui pelatihan bahasa dan mentalitas yang unggul.</p>
+        <p>LPK Bengagaku Mandiri membantu pemuda Indonesia meraih karir impian di Jepang melalui pelatihan bahasa dan mentalitas yang unggul.</p>
         <a href="#alur" class="btn-cta">Mulai Perjalananmu</a>
    
         <div class="custom-shape-divider-bottom">
@@ -1031,11 +1068,12 @@ nav ul {
         <div id="testi-marquee" class="marquee-container"></div>
     </div>
 </section>
+
     <footer id="kontak">
         <div class="footer-container">
             <div class="footer-col">
                 <h4 style="color: var(--sakura-pink-primary);">Yayasan Aruva</h4>
-                <p style="font-size: 0.9rem; color: #999; line-height: 1.8;">LPK Bengaku Mandiri berdedikasi menciptakan SDM berkualitas, berkarakter, dan siap bersaing di pasar kerja internasional, khususnya Jepang.</p>
+                <p style="font-size: 0.9rem; color: #999; line-height: 1.8;">LPK Bengagaku Mandiri berdedikasi menciptakan SDM berkualitas, berkarakter, dan siap bersaing di pasar kerja internasional, khususnya Jepang.</p>
             </div>
             <div class="footer-col footer-links">
                 <h4>Program</h4>
@@ -1066,13 +1104,13 @@ nav ul {
                     </li>
                     <li>
                         <span class="contact-info-icon">📧</span>
-                        <span>admin@aruva-Bengaku.com</span>
+                        <span>admin@aruva-bengagaku.com</span>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 <strong>Yayasan Aruva Bengaku Mandiri</strong>. All Rights Reserved.</p>
+            <p>&copy; 2026 <strong>Yayasan Aruva Bengagaku Mandiri</strong>. All Rights Reserved.</p>
             <p>Izin LPK No: 123/DITJEN-BINALATTAS/2026</p>
         </div>
     </footer>
@@ -1163,7 +1201,7 @@ nav ul {
     // Masukkan ke container sebanyak 2 KALI (Sangat Penting untuk Infinite Loop)
     marqueeContainer.innerHTML = cardHTML + cardHTML;
 </script>
-
+<script>
 // Script untuk Lightbox Gallery
 const galleryCards = document.querySelectorAll('.gallery-card img');
 const lightbox = document.getElementById('lightbox');
@@ -1175,5 +1213,45 @@ galleryCards.forEach(img => {
         lightbox.classList.add('active');
     });
 });
+
+function createPetal() {
+    const container = document.getElementById('sakura-container');
+    if (container.childElementCount > 15) return;
+
+    const petal = document.createElement('div');
+    petal.classList.add('petal');
+
+    // Variasi ukuran
+    const size = Math.random() * 10 + 8 + 'px';
+    petal.style.width = size;
+    petal.style.height = size;
+
+    // Posisi awal horizontal
+    petal.style.left = Math.random() * 100 + 'vw';
+
+    // Durasi jatuh (vertikal) - dibuat lambat agar elegan
+    const fallDuration = Math.random() * 5 + 10 + 's'; 
+    
+    // Durasi ayunan (horizontal) - berbeda dengan durasi jatuh agar pola tidak monoton
+    const swayDuration = Math.random() * 2 + 3 + 's';
+    const swayDelay = Math.random() * -5 + 's'; // Delay negatif agar animasi langsung jalan di posisi acak
+
+    petal.style.animationDuration = `${fallDuration}, ${swayDuration}`;
+    petal.style.animationDelay = `0s, ${swayDelay}`;
+    
+    // Opacity acak
+    petal.style.opacity = Math.random() * 0.6 + 0.3;
+
+    container.appendChild(petal);
+
+    // Hapus setelah jatuh
+    setTimeout(() => {
+        petal.remove();
+    }, parseFloat(fallDuration) * 1000);
+}
+
+// Interval kemunculan kelopak
+setInterval(createPetal, 1000);
+</Script>
 </body>
 </html>
