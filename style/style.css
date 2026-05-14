@@ -283,7 +283,7 @@
     /* Tambahkan elemen kelopak berguguran lembut di BG */
     #alur::before {
         content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        background-image: url('gambar_petal_overlay.png'); /* Gambar transparan kelopak berguguran */
+        background-image: url('https://cdn-icons-png.flaticon.com/512/1762/1762755.png'); /* Gambar transparan kelopak berguguran */
         background-size: cover; opacity: 0.3; pointer-events: none;
     }
     
