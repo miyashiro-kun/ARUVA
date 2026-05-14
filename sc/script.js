@@ -1,4 +1,4 @@
-const images = [
+const images2 = [
     'img/gallery/1.jpg',
     'img/gallery/2.jpg',
     'img/gallery/3.jpg'
@@ -10,8 +10,8 @@ const frontFace = document.querySelector('.face.front');
 const nextLayer = document.querySelector('.origami-next');
 
 // Set gambar awal
-frontFace.style.backgroundImage = `url('${images[0]}')`;
-nextLayer.style.backgroundImage = `url('${images[1]}')`;
+frontFace.style.backgroundImage = `url('${images2[0]}')`;
+nextLayer.style.backgroundImage = `url('${images2[1]}')`;
 
 function foldTransition() {
     // 1. Mulai animasi melipat
@@ -19,14 +19,14 @@ function foldTransition() {
 
     setTimeout(() => {
         // 2. Saat kertas sudah tidak terlihat (setelah 1.5 detik)
-        currentIndex = (currentIndex + 1) % images.length;
-        const futureIndex = (currentIndex + 1) % images.length;
+        currentIndex = (currentIndex + 1) % images2.length;
+        const futureIndex = (currentIndex + 1) % images2.length;
 
         // 3. Gambar yang tadi di belakang sekarang pindah ke depan
-        frontFace.style.backgroundImage = `url('${images[currentIndex]}')`;
+        frontFace.style.backgroundImage = `url('${images2[currentIndex]}')`;
         
         // 4. Siapkan gambar berikutnya lagi di layer belakang
-        nextLayer.style.backgroundImage = `url('${images[futureIndex]}')`;
+        nextLayer.style.backgroundImage = `url('${images2[futureIndex]}')`;
 
         // 5. Kembalikan posisi kertas tanpa animasi (instan)
         paper.style.transition = 'none';
