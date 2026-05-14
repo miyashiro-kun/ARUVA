@@ -67,27 +67,19 @@
     }
     
     /* Menargetkan semua elemen interaktif */
-    a, 
-    button, 
-    input, 
-    textarea, 
-    select,
-    .btn-custom { /* tambahkan class khusus jika perlu */
-        
-        /* 1. Menghilangkan kotak biru di Chrome/Safari/Opera (Android & iOS) */
-        -webkit-tap-highlight-color: transparent;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    
-        /* 2. Menghilangkan garis outline saat fokus (sering muncul di Firefox/Desktop) */
-        outline: none;
-    
-        /* 3. Mencegah teks terpilih secara tidak sengaja saat ditekan lama (Long Press) */
-        -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none;   /* Safari */
-        -moz-user-select: none;      /* Firefox */
-        -ms-user-select: none;       /* Internet Explorer/Edge */
-        user-select: none;           /* Standard syntax */
-    }
+  /* Menghilangkan highlight secara universal pada semua elemen interaktif */
+a, button, input, label, select, textarea, [onclick], [data-key], .lang-main, .lang-item {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+    outline: none !important;
+    user-select: none;
+}
+
+/* Menghilangkan border fokus saat elemen diklik (Desktop) */
+*:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
     
     #desktop-cta {
         margin-left: auto;
