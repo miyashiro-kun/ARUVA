@@ -1227,10 +1227,10 @@
 .waves {
     position: relative;
     width: 100%;
-    height: 15vh;
+    height: 18vh;
     margin-bottom: -1px; /* Menghilangkan gap putih tipis */
     min-height: 100px;
-    max-height: 150px;
+    max-height: 190px;
 }
 
 /* --- Animasi Parallax Wave --- */
