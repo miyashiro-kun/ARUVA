@@ -1,4 +1,4 @@
- /* --- 1. CSS RESET & VARIABEL TEMA SAKURA --- */
+     /* --- 1. CSS RESET & VARIABEL TEMA SAKURA --- */
     * {
         margin: 0;
         padding: 0;
@@ -111,21 +111,90 @@
     .mobile-only { display: none; }
     
     /* --- 3. HERO SECTION (Sakura Vibe) --- */
-    .hero {
-        position: relative;
-        height: 80vh;
-        /* Ganti dengan gambar tema sakura profesional, misal: Gunung Fuji + Sakura */
-        background: linear-gradient(rgba(255, 235, 238, 0.5), rgba(255, 255, 255, 0.8)),url('../img/header.png');"; 
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: var(--text-dark);
-        padding: 0 20px;
-    }
+.hero {
+    position: relative;
+    height: 100vh; /* Sesuaikan tinggi agar fullscreen */
+    display: flex;
+    flex-direction: column; /* Ini yang membuat konten tersusun vertikal */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-dark);
+    overflow: hidden;
+    background: #000; /* Dasar hitam untuk transisi origami */
+}
+
+.origami-container {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.origami-next, .face {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Layer kertas yang akan melipat */
+.origami-paper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.5s;
+    z-index: 3;
+}
+.hero-content {
+    position: relative;
+    z-index: 10; /* Pastikan di atas semua layer origami/slider */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Memberi jarak antar judul, deskripsi, dan tombol */
+    max-width: 1800px; /* Agar teks tidak terlalu lebar ke samping */
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.face {
+    backface-visibility: hidden;
+}
+
+/* Sisi belakang kertas (warna polos seperti kertas origami terbalik) */
+.face.back {
+    background: #f0f0f0; 
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efek saat melipat dan terbang */
+.origami-paper.fold {
+    transform: rotateY(-180deg) scale(0.1) translateX(-2000px) rotateZ(-45deg);
+    opacity: 0;
+}
+
+/* Overlay agar teks tetap terbaca */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.6));
+    z-index: 2;
+}
     
     .hero h1 { font-size: 3.2rem; margin-bottom: 20px; font-weight: 800; color: var(--sakura-red-accent); text-transform: uppercase; letter-spacing: 2px; text-shadow: 1px 1px 2px rgba(255,255,255,0.8); }
     .hero p { font-size: 1.25rem; max-width: 700px; margin-bottom: 40px; color: #444; font-weight: 500; }
@@ -1144,3 +1213,4 @@
     opacity: 0;
     transition: opacity 0.01s 0.3s; /* Muncul tepat saat tertutup kotak */
 }
+   
