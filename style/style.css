@@ -924,8 +924,8 @@
 
 .batch-header p {
     color: var(--sakura-red-accent);
-    font-weight: 500;
-    font-size: 0.95rem;
+    font-weight: 400;
+    font-size: 0.75rem;
 }
 
 .batch-body {
