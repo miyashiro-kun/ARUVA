@@ -1058,6 +1058,37 @@
         }
     }
     
+    /* --- FAB BAHASA (KIRI BAWAH) --- */
+.lang-fab-container {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+.lang-checkbox { display: none; }
+.lang-main {
+    width: 50px; height: 50px;
+    background: var(--white);
+    border: 2px solid var(--sakura-red-accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--sakura-red-accent); font-weight: 800;
+    cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.lang-list {
+    margin-bottom: 10px; display: flex; flex-direction: column; gap: 10px;
+    pointer-events: none; opacity: 0; transform: translateY(10px); transition: 0.3s;
+}
+.lang-item {
+    width: 40px; height: 40px; background: var(--sakura-pink-primary);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: white; text-decoration: none; font-weight: 700; font-size: 0.8rem;
+}
+.lang-checkbox:checked ~ .lang-list { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -1083,7 +1114,16 @@
       </a>
     </div>
   </div>
-
+<div class="lang-fab-container">
+    <input type="checkbox" id="lang-checkbox" class="lang-checkbox">
+    <label for="lang-checkbox" class="lang-main">
+        <span id="current-lang">ID</span>
+    </label>
+    <div class="lang-list">
+        <a href="#" class="lang-item" onclick="changeLang('ID')">ID</a>
+        <a href="#" class="lang-item" onclick="changeLang('JP')">JP</a>
+    </div>
+</div>
   <nav>
     <div class="flex-container" style="display: flex;">
       <img src="img/logo.jpg" style="align-self: flex-start;width:50px;height:50px;radius:90%;">
@@ -1104,19 +1144,19 @@
     </label>
 
     <ul>
-      <li><a href="#home">Beranda</a></li>
-      <li><a href="#program">Program Unggulan</a></li>
-      <li><a href="#alur">Alur Daftar</a></li>
-      <li><a href="#kontak">Kontak</a></li>
-      <li class="mobile-only"><a href="https://wa.me/628123456789" class="btn-cta2">Daftar</a></li>
+      <li><a data-key="nav-home" href="#home">Beranda</a></li>
+      <li><a data-key="nav-program" href="#program">Program Unggulan</a></li>
+      <li><a data-key="nav-alur" href="#alur">Alur Daftar</a></li>
+      <li><a data-key="nav-kontak" href="#kontak">Kontak</a></li>
+      <li class="mobile-only"><a data-key="nav-daftar" href="https://wa.me/628123456789" class="btn-cta2">Daftar</a></li>
     </ul>
 
   </nav>
 
   <section id="home" class="hero">
-    <h1>Masa Depanmu di Negeri Sakura</h1>
-    <p>LPK Bengaku Mandiri membantu pemuda Indonesia meraih karir impian di Jepang melalui pelatihan bahasa dan mentalitas yang unggul.</p>
-    <a href="#alur" class="btn-cta">Mulai Perjalananmu</a>
+    <h1 data-key="hero-title">Masa Depanmu di Negeri Sakura</h1>
+    <p data-key="hero-desc">LPK Bengaku Mandiri membantu pemuda Indonesia meraih karir impian di Jepang melalui pelatihan bahasa dan mentalitas yang unggul.</p>
+    <a data-key="hero-btn" href="#alur" class="btn-cta">Mulai Perjalananmu</a>
 
     <div class="custom-shape-divider-bottom">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -1127,7 +1167,7 @@
 
   <section id="program">
     <div class="section-title">
-      <h2>Program Unggulan</h2>
+      <h2 data-key="">Program Unggulan</h2>
       <div class="underline"></div>
     </div>
 
@@ -1136,37 +1176,37 @@
       <div class="program-card">
         <div class="program-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdSVPRPmCSNzv9PJAI41DFyyuN3kX5Z3lvybMvBrlrt1ObJH4AAiGOT787&s=10" alt="Caregiver"></div>
         <div class="program-content">
-          <h3>Ikusei Suro</h3>
-          <p>.....</p>
+          <h3 data-key="">Ikusei Suro</h3>
+          <p data-key="">.....</p>
         </div>
       </div>
       <div class="program-card">
         <div class="program-img"><img src="https://cdn-web-2.ruangguru.com/landing-pages/assets/2c2a67de-34c1-4347-8c78-5affa9115f82.png?convert=webp" alt="Caregiver"></div>
         <div class="program-content">
-          <h3>Tokutei Ginou</h3>
-          <p>....</p>
+          <h3 data-key="">Tokutei Ginou</h3>
+          <p data-key="">....</p>
         </div>
       </div>
 
       <div class="program-card">
         <div class="program-img"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="Konstruksi"></div>
         <div class="program-content">
-          <h3>Konstruksi</h3>
-          <p>Berperan dalam pembangunan infrastruktur modern di kota-kota besar seperti Tokyo dan Osaka.</p>
+          <h3 data-key="">Konstruksi</h3>
+          <p data-key="">Berperan dalam pembangunan infrastruktur modern di kota-kota besar seperti Tokyo dan Osaka.</p>
         </div>
       </div>
       <div class="program-card">
         <div class="program-img"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="Pertanian"></div>
         <div class="program-content">
-          <h3>Pertanian</h3>
-          <p>Mempelajari teknologi budidaya tanaman modern di Prefektur Nagano yang asri.</p>
+          <h3 data-key="">Pertanian</h3>
+          <p data-key="">Mempelajari teknologi budidaya tanaman modern di Prefektur Nagano yang asri.</p>
         </div>
       </div>
       <div class="program-card">
         <div class="program-img"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="Caregiver"></div>
         <div class="program-content">
-          <h3>Caregiver</h3>
-          <p>Berdedikasi melayani lansia dengan teknologi dan standar hospitality tinggi khas Jepang.</p>
+          <h3 data-key="">Caregiver</h3>
+          <p data-key="">Berdedikasi melayani lansia dengan teknologi dan standar hospitality tinggi khas Jepang.</p>
         </div>
       </div>
     </div>
@@ -1174,14 +1214,14 @@
 
   <section id="gallery" class="gallery-section">
     <div class="section-title">
-      <h2>Gallery Kegiatan</h2>
+      <h2 data-key="">Gallery Kegiatan</h2>
       <div class="underline"></div>
     </div>
 
     <div class="gallery-container" id="dynamic-gallery"></div>
 
     <div style="text-align: center; margin-top: 30px;">
-      <button id="load-more-btn" class="btn-batch" style="cursor: pointer; border: none; padding: 12px 40px;">
+      <button data-key="" id="load-more-btn" class="btn-batch" style="cursor: pointer; border: none; padding: 12px 40px;">
         Lihat Lainnya <i class="fas fa-chevron-down" style="margin-left: 8px;"></i>
       </button>
     </div>
@@ -1193,29 +1233,29 @@
 
   <section id="pricing-facility">
     <div class="section-title">
-      <h2>Pendaftaran</h2>
+      <h2 data-key="">Pendaftaran</h2>
       <div class="underline"></div>
     </div>
 
     <div class="pricing-container">
       <div class="price-card">
-        <h4>Biaya Awal</h4>
+        <h4 data-key="">Biaya Awal</h4>
         <div class="price-amount">Rp 3.000.000</div>
-        <p style="font-size: 0.8rem; color: #999; margin-top: 10px;">*Syarat dan ketentuan berlaku</p>
+        <p data-key="" style="font-size: 0.8rem; color: #999; margin-top: 10px;">*Syarat dan ketentuan berlaku</p>
       </div>
 
       <div class="facility-card">
-        <h3>Fasilitas yang Didapatkan:</h3>
+        <h3 data-key="">Fasilitas yang Didapatkan:</h3>
         <ul class="facility-list">
-          <li>Pembelajaran Bahasa Jepang</li>
-          <li>Buku Pelajaran</li>
-          <li>Outfit / Seragam</li>
-          <li>Pembinaan Mensetsu</li>
-          <li>Ruang Kelas Nyaman</li>
-          <li>Konsultasi Karir</li>
+          <li data-key="">Pembelajaran Bahasa Jepang</li>
+          <li data-key="">Buku Pelajaran</li>
+          <li data-key="">Outfit / Seragam</li>
+          <li data-key="">Pembinaan Mensetsu</li>
+          <li data-key="">Ruang Kelas Nyaman</li>
+          <li data-key="">Konsultasi Karir</li>
         </ul>
         <div style="margin-top: 30px;">
-          <a href="https://wa.me/628123456789" class="btn-cta" style="width: 100%; text-align: center;">Tanya Detail Biaya</a>
+          <a data-key="" href="https://wa.me/628123456789" class="btn-cta" style="width: 100%; text-align: center;">Tanya Detail Biaya</a>
         </div>
       </div>
     </div>
@@ -1223,16 +1263,16 @@
 
   <section id="batch">
     <div class="section-title">
-      <h2>Batch Pendaftaran Terbaru</h2>
+      <h2 data-key="">Batch Pendaftaran Terbaru</h2>
       <div class="underline"></div>
     </div>
 
     <div class="batch-container">
       <div class="batch-card">
-        <div class="batch-status status-open">Tersedia</div>
+        <div data-key="" class="batch-status status-open">Tersedia</div>
         <div class="batch-header">
-          <h3>Kelas Pagi</h3>
-          <p>Program Intensif Harian</p>
+          <h3 data-key="">Kelas Pagi</h3>
+          <p data-key="">Program Intensif Harian</p>
         </div>
         <div class="batch-body">
           <div class="batch-info">
@@ -1241,21 +1281,21 @@
           </div>
           <div class="batch-info">
             <i class="fas fa-calendar-check"></i>
-            <span>Senin s/d Jumat</span>
+            <span data-key="">Senin s/d Jumat</span>
           </div>
           <div class="batch-info">
             <i class="fas fa-graduation-cap"></i>
-            <span>Materi: JLPT N5 - N4, Budaya, Kaiwa</span>
+            <span data-key="">Materi: JLPT N5 - N4, Budaya, Kaiwa</span>
           </div>
         </div>
-        <a href="https://wa.me/628123456789" class="btn-batch">Daftar Kelas Pagi</a>
+        <a data-key="" href="https://wa.me/628123456789" class="btn-batch">Daftar Kelas Pagi</a>
       </div>
 
       <div class="batch-card">
-        <div class="batch-status status-open">Tersedia</div>
+        <div data-key="" class="batch-status status-open">Tersedia</div>
         <div class="batch-header">
-          <h3>Kelas Malam</h3>
-          <p>Program Pekerja & Mahasiswa</p>
+          <h3 data-key="">Kelas Malam</h3>
+          <p data-key="">Program Pekerja & Mahasiswa</p>
         </div>
         <div class="batch-body">
           <div class="batch-info">
@@ -1264,21 +1304,21 @@
           </div>
           <div class="batch-info">
             <i class="fas fa-calendar-check"></i>
-            <span>Senin s/d Jumat</span>
+            <span data-key="">Senin s/d Jumat</span>
           </div>
           <div class="batch-info">
             <i class="fas fa-briefcase"></i>
-            <span>Materi: JLPT N5 - N4, Budaya, Kaiwa</span>
+            <span data-key="">Materi: JLPT N5 - N4, Budaya, Kaiwa</span>
           </div>
         </div>
-        <a href="https://wa.me/628123456789" class="btn-batch">Daftar Kelas Malam</a>
+        <a data-key="" href="https://wa.me/628123456789" class="btn-batch">Daftar Kelas Malam</a>
       </div>
     </div>
   </section>
 
   <section style="visibility:hidden;height:0px" id="alur">
     <div class="section-title">
-      <h2>Alur Keberangkatan</h2>
+      <h2 data-key="">Alur Keberangkatan</h2>
       <div class="underline"></div>
     </div>
 
@@ -1286,29 +1326,29 @@
       <div class="stepper-header">
         <div class="step-item active" onclick="changeStep(1)">
           <div class="step-circle">1</div>
-          <div class="step-label">Pendaftaran</div>
+          <div data-key="" class="step-label">Pendaftaran</div>
         </div>
         <div class="step-item" onclick="changeStep(2)">
           <div class="step-circle">2</div>
-          <div class="step-label">Pelatihan</div>
+          <div data-key="" class="step-label">Pelatihan</div>
         </div>
         <div class="step-item" onclick="changeStep(3)">
           <div class="step-circle">3</div>
-          <div class="step-label">Wawancara</div>
+          <div data-key="" class="step-label">Wawancara</div>
         </div>
         <div class="step-item" onclick="changeStep(4)">
           <div class="step-circle">4</div>
-          <div class="step-label">Dokumen</div>
+          <div data-key="" class="step-label">Dokumen</div>
         </div>
         <div class="step-item" onclick="changeStep(5)">
           <div class="step-circle">5</div>
-          <div class="step-label">Keberangkatan</div>
+          <div data-key="" class="step-label">Keberangkatan</div>
         </div>
       </div>
 
       <div class="step-detail-card fade-in" id="detail-box">
-        <h3 id="step-title">Langkah 1: Pendaftaran & Seleksi</h3>
-        <p id="step-desc">Tahap awal berupa cek berkas administrasi, tes fisik ringan, dan wawancara minat bakat untuk memastikan kesiapan Anda mengikuti program Diklat.</p>
+        <h3 data-key="" id="step-title">Langkah 1: Pendaftaran & Seleksi</h3>
+        <p data-key="" id="step-desc">Tahap awal berupa cek berkas administrasi, tes fisik ringan, dan wawancara minat bakat untuk memastikan kesiapan Anda mengikuti program Diklat.</p>
       </div>
 
       <div class="mobile-steps">
@@ -1338,9 +1378,9 @@
 
   <section id="process" class="process-section">
     <div class="section-title">
-      <h2>Alur Keberangkatan</h2>
+      <h2 data-key="">Alur Keberangkatan</h2>
       <div class="underline"></div>
-      <p>Proses terukur dari awal pendaftaran hingga terbang ke Jepang</p>
+      <p data-key="">Proses terukur dari awal pendaftaran hingga terbang ke Jepang</p>
     </div>
 
     <div class="process-container">
@@ -1350,8 +1390,8 @@
           <span class="step-number">1</span>
         </div>
         <div class="step-content">
-          <h3>Pendaftaran LPK</h3>
-          <p>Pengisian formulir pendaftaran dan seleksi administrasi di kantor Aruva.</p>
+          <h3 data-key="">Pendaftaran LPK</h3>
+          <p data-key="">Pengisian formulir pendaftaran dan seleksi administrasi di kantor Aruva.</p>
         </div>
       </div>
 
@@ -1361,8 +1401,8 @@
           <span class="step-number">2</span>
         </div>
         <div class="step-content">
-          <h3>Pendidikan Bahasa</h3>
-          <p>Pelatihan intensif bahasa Jepang (N5 - N4) dengan metode praktis.</p>
+          <h3data-key="">Pendidikan Bahasa</h3>
+          <p data-key="">Pelatihan intensif bahasa Jepang (N5 - N4) dengan metode praktis.</p>
         </div>
       </div>
 
@@ -1372,8 +1412,8 @@
           <span class="step-number">3</span>
         </div>
         <div class="step-content">
-          <h3>Ujian Kualifikasi</h3>
-          <p>Mengikuti ujian resmi (JLPT/JFT & SSW) untuk mendapatkan sertifikat keahlian.</p>
+          <h3 data-key="">Ujian Kualifikasi</h3>
+          <p data-key="">Mengikuti ujian resmi (JLPT/JFT & SSW) untuk mendapatkan sertifikat keahlian.</p>
         </div>
       </div>
 
@@ -1383,8 +1423,8 @@
           <span class="step-number">4</span>
         </div>
         <div class="step-content">
-          <h3>Pengurusan Dokumen</h3>
-          <p>Proses COE, paspor, dan dokumen resmi lainnya jika dinyatakan lulus & fit.</p>
+          <h3 data-key="">Pengurusan Dokumen</h3>
+          <p data-key="">Proses COE, paspor, dan dokumen resmi lainnya jika dinyatakan lulus & fit.</p>
         </div>
       </div>
 
@@ -1394,8 +1434,8 @@
           <span class="step-number">5</span>
         </div>
         <div class="step-content">
-          <h3>Pemantapan Budaya</h3>
-          <p>Pembekalan disiplin kerja (*Choure*) dan pengenalan budaya hidup di Jepang.</p>
+          <h3 data-key="">Pemantapan Budaya</h3>
+          <p data-key="">Pembekalan disiplin kerja (*Choure*) dan pengenalan budaya hidup di Jepang.</p>
         </div>
       </div>
 
@@ -1405,8 +1445,8 @@
           <span class="step-number">6</span>
         </div>
         <div class="step-content">
-          <h3>Pendaftaran JOB</h3>
-          <p>Wawancara dengan user/perusahaan Jepang dan keberangkatan kerja.</p>
+          <h3 data-key="">Pendaftaran JOB</h3>
+          <p data-key="">Wawancara dengan user/perusahaan Jepang dan keberangkatan kerja.</p>
         </div>
       </div>
     </div>
@@ -1414,7 +1454,7 @@
 
   <section id="testimoni">
     <div class="section-title">
-      <h2>Pesan dari Alumni</h2>
+      <h2 data-key="">Pesan dari Alumni</h2>
       <div class="underline"></div>
     </div>
 
@@ -1427,26 +1467,26 @@
     <div class="footer-container">
       <div class="footer-col">
         <h4 style="color: var(--sakura-pink-primary);">Yayasan Aruva</h4>
-        <p style="font-size: 0.9rem; color: #999; line-height: 1.8;">LPK Bengaku Mandiri berdedikasi menciptakan SDM berkualitas, berkarakter, dan siap bersaing di pasar kerja internasional, khususnya Jepang.</p>
+        <p data-key="" style="font-size: 0.9rem; color: #999; line-height: 1.8;">LPK Bengaku Mandiri berdedikasi menciptakan SDM berkualitas, berkarakter, dan siap bersaing di pasar kerja internasional, khususnya Jepang.</p>
       </div>
       <div class="footer-col footer-links">
-        <h4>Program</h4>
+        <h4 data-key="">Program</h4>
         <ul>
-          <li><a href="#">Ginou Jisshu (Magang)</a></li>
-          <li><a href="#">Tokutei Ginou (SSW)</a></li>
-          <li><a href="#">Kursus Bahasa</a></li>
+          <li><a data-key="" href="#">Ginou Jisshu (Magang)</a></li>
+          <li><a data-key="" href="#">Tokutei Ginou (SSW)</a></li>
+          <li><a data-key="" href="#">Kursus Bahasa</a></li>
         </ul>
       </div>
       <div class="footer-col footer-links">
-        <h4>Navigasi</h4>
+        <h4 data-key="">Navigasi</h4>
         <ul>
-          <li><a href="#home">Beranda</a></li>
-          <li><a href="#program">Program</a></li>
-          <li><a href="#alur">Alur Daftar</a></li>
+          <li><a data-key="" href="#home">Beranda</a></li>
+          <li><a data-key="" href="#program">Program</a></li>
+          <li><a data-key="" href="#alur">Alur Daftar</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Hubungi Kami</h4>
+        <h4 data-key="">Hubungi Kami</h4>
         <ul class="contact-info">
           <li>
             <span class="contact-info-icon">📍</span>
@@ -1684,6 +1724,220 @@
             renderNextImages();
         });
     });
+    
+    const translations = {
+    'ID': {
+        // Navbar
+        'nav-home': 'Beranda',
+        'nav-program': 'Program Unggulan',
+        'nav-alur': 'Alur Daftar',
+        'nav-kontak': 'Kontak',
+        'nav-daftar': 'Daftar',
+
+        // Hero Section
+        'hero-title': 'Masa Depanmu di Negeri Sakura',
+        'hero-desc': 'LPK Bengaku Mandiri membantu pemuda Indonesia meraih karir impian di Jepang melalui pelatihan bahasa dan mentalitas yang unggul.',
+        'hero-btn': 'Mulai Perjalananmu',
+
+        // Program Section
+        'program-title': 'Program Unggulan',
+        'program-1-title': 'Ikusei Suro',
+        'program-2-title': 'Tokutei Ginou',
+        'program-3-title': 'Konstruksi',
+        'program-3-desc': 'Berperan dalam pembangunan infrastruktur modern di kota-kota besar seperti Tokyo dan Osaka.',
+        'program-4-title': 'Pertanian',
+        'program-4-desc': 'Mempelajari teknologi budidaya tanaman modern di Prefektur Nagano yang asri.',
+        'program-5-title': 'Caregiver',
+        'program-5-desc': 'Berdedikasi melayani lansia dengan teknologi dan standar hospitality tinggi khas Jepang.',
+
+        // Gallery
+        'gallery-title': 'Gallery Kegiatan',
+        'gallery-btn': 'Lihat Lainnya',
+
+        // Pricing & Facility
+        'price-section-title': 'Pendaftaran',
+        'price-label': 'Biaya Awal',
+        'price-amount': 'Rp 3.000.000',
+        'price-note': '*Syarat dan ketentuan berlaku',
+        'facility-title': 'Fasilitas yang Didapatkan:',
+        'fac-1': 'Pembelajaran Bahasa Jepang',
+        'fac-2': 'Buku Pelajaran',
+        'fac-3': 'Outfit / Seragam',
+        'fac-4': 'Pembinaan Mensetsu',
+        'fac-5': 'Ruang Kelas Nyaman',
+        'fac-6': 'Konsultasi Karir',
+        'fac-btn': 'Tanya Detail Biaya',
+
+        // Batch Section
+        'batch-title': 'Batch Pendaftaran Terbaru',
+        'batch-status': 'Tersedia',
+        'batch-pagi-title': 'Kelas Pagi',
+        'batch-pagi-desc': 'Program Intensif Harian',
+        'batch-malam-title': 'Kelas Malam',
+        'batch-malam-desc': 'Program Pekerja & Mahasiswa',
+        'batch-time-pagi': '08:00 - 14:00 WIB',
+        'batch-time-malam': '20:00 - 23:00 WIB',
+        'batch-days': 'Senin s/d Jumat',
+        'batch-btn': 'Daftar Sekarang',
+
+        // Alur Keberangkatan
+        'process-title': 'Alur Keberangkatan',
+        'process-subtitle': 'Proses terukur dari awal pendaftaran hingga terbang ke Jepang',
+        'step-1-title': 'Pendaftaran LPK',
+        'step-1-desc': 'Pengisian formulir pendaftaran dan seleksi administrasi di kantor Aruva.',
+        'step-2-title': 'Pendidikan Bahasa',
+        'step-2-desc': 'Pelatihan intensif bahasa Jepang (N5 - N4) dengan metode praktis.',
+        'step-3-title': 'Ujian Kualifikasi',
+        'step-3-desc': 'Mengikuti ujian resmi (JLPT/JFT & SSW) untuk mendapatkan sertifikat keahlian.',
+        'step-4-title': 'Pengurusan Dokumen',
+        'step-4-desc': 'Proses COE, paspor, dan dokumen resmi lainnya jika dinyatakan lulus & fit.',
+        'step-5-title': 'Pemantapan Budaya',
+        'step-5-desc': 'Pembekalan disiplin kerja (Choure) dan pengenalan budaya hidup di Jepang.',
+        'step-6-title': 'Pendaftaran JOB',
+        'step-6-desc': 'Wawancara dengan user/perusahaan Jepang dan keberangkatan kerja.',
+
+        // Footer
+        'footer-desc': 'LPK Bengaku Mandiri berdedikasi menciptakan SDM berkualitas, berkarakter, dan siap bersaing di pasar kerja internasional, khususnya Jepang.',
+        'footer-contact-title': 'Hubungi Kami',
+        'footer-address': 'Pule Tegalsari Kandeman Batang'
+    },
+    'JP': {
+        // Navbar
+        'nav-home': 'ホーム',
+        'nav-program': '優良プログラム',
+        'nav-alur': '登録の流れ',
+        'nav-kontak': '連絡先',
+        'nav-daftar': '登録',
+
+        // Hero Section
+        'hero-title': '桜の国でのあなたの未来',
+        'hero-desc': 'LPK Bengaku Mandiriは、優れた語学訓練とメンタリティを通じて、インドネシアの若者が日本で夢のキャリアを達成できるよう支援します。',
+        'hero-btn': '旅を始める',
+
+        // Program Section
+        'program-title': '優良プログラム',
+        'program-1-title': '育成就労',
+        'program-2-title': '特定技能',
+        'program-3-title': '建設',
+        'program-3-desc': '東京や大阪などの大都市で近代的なインフラ整備に貢献します。',
+        'program-4-title': '農業',
+        'program-4-desc': '自然豊かな長野県で近代的な栽培技術を学びます。',
+        'program-5-title': '介護',
+        'program-5-desc': '日本独自の高いホスピタリティ基準と技術で高齢者に奉仕します。',
+
+        // Gallery
+        'gallery-title': '活動ギャラリー',
+        'gallery-btn': 'もっと見る',
+
+        // Pricing & Facility
+        'price-section-title': 'お申し込み',
+        'price-label': '初期費用',
+        'price-amount': '300万ルピア',
+        'price-note': '*利用規約が適用されます',
+        'facility-title': '含まれる施設・特典：',
+        'fac-1': '日本語学習',
+        'fac-2': '教科書',
+        'fac-3': '制服',
+        'fac-4': '面接指導',
+        'fac-5': '快適な教室',
+        'fac-6': 'キャリア相談',
+        'fac-btn': '費用の詳細を聞く',
+
+        // Batch Section
+        'batch-title': '最新の募集バッチ',
+        'batch-status': '募集中',
+        'batch-pagi-title': '午前のクラス',
+        'batch-pagi-desc': '毎日集中プログラム',
+        'batch-malam-title': '夜間のクラス',
+        'batch-malam-desc': '社会人・学生向け',
+        'batch-time-pagi': '08:00 - 14:00 WIB',
+        'batch-time-malam': '20:00 - 23:00 WIB',
+        'batch-days': '月曜日〜金曜日',
+        'batch-btn': '今すぐ申し込む',
+
+        // Alur Keberangkatan
+        'process-title': '日本への流れ',
+        'process-subtitle': '申し込みから出国までの明確なプロセス',
+        'step-1-title': 'LPK登録',
+        'step-1-desc': 'Aruva事務所での申込書記入と書類選考。',
+        'step-2-title': '語学教育',
+        'step-2-desc': '実践的な方法による日本語集中訓練 (N5 - N4)。',
+        'step-3-title': '資格試験',
+        'step-3-desc': '技能証明書取得のための公式試験 (JLPT/JFT & SSW) の受験。',
+        'step-4-title': '書類手続き',
+        'step-4-desc': '合格後のCOE、パスポート、その他の公式書類の申請。',
+        'step-5-title': '文化定着',
+        'step-5-desc': '朝礼などの仕事の規律と日本での生活文化のオリエンテーション。',
+        'step-6-title': '仕事の応募',
+        'step-6-desc': '日本企業との面接および出国。',
+
+        // Footer
+        'footer-desc': 'LPK Bengaku Mandiriは、質の高い人材を育成し、日本を中心とした国際的な労働市場で競争できる人材の創出に専念しています。',
+        'footer-contact-title': 'お問い合わせ',
+        'footer-address': 'バタン県カンデマン、プーレ・テガルサリ'
+    }
+};
+
+function changeLang(lang) {
+    // Update teks pada tombol utama FAB
+    const currentLangDisplay = document.getElementById('current-lang');
+    if(currentLangDisplay) currentLangDisplay.innerText = lang;
+
+    // Cari semua elemen yang memiliki atribut data-key
+    const elements = document.querySelectorAll('[data-key]');
+    
+    elements.forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+            // Jika elemen adalah input/textarea, ganti placeholder
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = translations[lang][key];
+            } else {
+                el.innerText = translations[lang][key];
+            }
+        }
+    });
+
+    // Simpan ke localStorage agar bahasa tidak berubah saat refresh
+    localStorage.setItem('selectedLang', lang);
+    
+    // Tutup menu FAB Bahasa
+    const langCheckbox = document.getElementById('lang-checkbox');
+    if(langCheckbox) langCheckbox.checked = false;
+}
+
+// Saat halaman dimuat, gunakan bahasa yang terakhir dipilih atau default ke ID
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('selectedLang') || 'ID';
+    changeLang(savedLang);
+});
+
+function changeLang(lang) {
+    // 1. Update teks pada tombol FAB
+    document.getElementById('current-lang').innerText = lang;
+
+    // 2. Cari semua elemen yang punya atribut data-key
+    const elements = document.querySelectorAll('[data-key]');
+    
+    elements.forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (translations[lang][key]) {
+            el.innerText = translations[lang][key];
+        }
+    });
+
+    // 3. Simpan pilihan bahasa ke local storage (agar tidak reset saat refresh)
+    localStorage.setItem('selectedLang', lang);
+
+    // 4. Tutup menu FAB
+    document.getElementById('lang-checkbox').checked = false;
+}
+
+// Jalankan bahasa terakhir yang dipilih saat halaman dimuat
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('selectedLang') || 'ID';
+    changeLang(savedLang);
+});
   </Script>
 </body>
 </html>
