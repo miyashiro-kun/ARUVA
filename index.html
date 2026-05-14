@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayasan Aruva - LPK Bengaku Mandiri</title>
+    <title>Yayasan Aruva - LPK Bengaku Mandiri | Sakura Theme</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         /* --- 1. CSS RESET & VARIABEL TEMA SAKURA --- */
@@ -829,6 +829,126 @@ nav ul {
     }
 }
 
+
+/* --- SECTION: BATCH TERBARU --- */
+
+/* Warna khusus untuk membedakan Pagi dan Malam (Opsional) */
+.batch-card .fa-clock {
+    color: #f1c40f; /* Kuning Matahari */
+}
+
+.batch-card .fa-moon {
+    color: #34495e; /* Biru Malam */
+}
+
+/* Membuat teks jam lebih menonjol */
+.batch-info span strong {
+    font-size: 1.1rem;
+    color: var(--sakura-red-accent);
+}
+
+.batch-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.batch-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    border: 1px solid var(--sakura-pink-primary);
+    box-shadow: 0 10px 25px rgba(255, 183, 197, 0.1);
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.batch-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(255, 183, 197, 0.2);
+}
+
+.batch-status {
+    position: absolute;
+    top: 20px;
+    right: -35px;
+    transform: rotate(45deg);
+    padding: 5px 40px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: white;
+    width: 150px;
+    text-align: center;
+}
+
+.status-open { background: #27ae60; }
+.status-closed { background: #7f8c8d; }
+
+.batch-header h3 {
+    color: var(--sakura-red-accent);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.batch-header p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    border-bottom: 2px dashed var(--sakura-pink-primary);
+    padding-bottom: 15px;
+}
+
+.batch-body {
+    margin-bottom: 25px;
+}
+
+.batch-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.batch-info i {
+    color: var(--sakura-red-accent);
+    width: 20px;
+}
+
+.btn-batch {
+    display: block;
+    text-align: center;
+    background: var(--sakura-red-accent);
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-batch:hover {
+    background: var(--text-dark);
+}
+
+.btn-batch.disabled {
+    background: #ecf0f1;
+    color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+/* Penyesuaian Mobile */
+@media (max-width: 768px) {
+    .batch-container {
+        grid-template-columns: 1fr;
+    }
+}
+
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -854,6 +974,8 @@ nav ul {
         </a>
     </div>
 </div>
+
+
     <nav>
         <div class="flex-container" style="display: flex;">
         <img src="img/logo.jpg" style="align-self: flex-start;width:50px;height:50px;radius:90%;">
@@ -880,7 +1002,7 @@ nav ul {
             <li><a href="#kontak">Kontak</a></li>
             <li class="mobile-only"><a href="https://wa.me/628123456789" class="btn-cta2">Daftar</a></li>
         </ul>
-
+        
         <a href="https://wa.me/628123456789" class="btn-cta2" id="desktop-cta">Daftar Sekarang</a>
     </nav>
 
@@ -996,6 +1118,61 @@ nav ul {
             </div>
         </div>
     </section>
+    
+    <section id="batch">
+    <div class="section-title">
+        <h2>Batch Pendaftaran Terbaru</h2>
+        <div class="underline"></div>
+    </div>
+
+    <div class="batch-container">
+        <div class="batch-card">
+            <div class="batch-status status-open">Tersedia</div>
+            <div class="batch-header">
+                <h3>Kelas Pagi</h3>
+                <p>Program Intensif Harian</p>
+            </div>
+            <div class="batch-body">
+                <div class="batch-info">
+                    <i class="fas fa-clock"></i>
+                    <span><strong>08:00 - 14:00 WIB</strong></span>
+                </div>
+                <div class="batch-info">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Senin s/d Jumat</span>
+                </div>
+                <div class="batch-info">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Materi: JLPT N5 - N4, Budaya, Kaiwa</span>
+                </div>
+            </div>
+            <a href="https://wa.me/628123456789" class="btn-batch">Daftar Kelas Pagi</a>
+        </div>
+
+        <div class="batch-card">
+            <div class="batch-status status-open">Tersedia</div>
+            <div class="batch-header">
+                <h3>Kelas Malam</h3>
+                <p>Program Pekerja & Mahasiswa</p>
+            </div>
+            <div class="batch-body">
+                <div class="batch-info">
+                    <i class="fas fa-moon"></i>
+                    <span><strong>20:00 - 23:00 WIB</strong></span>
+                </div>
+                <div class="batch-info">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Senin s/d Jumat</span>
+                </div>
+                <div class="batch-info">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Materi: JLPT N5 - N4, Budaya, Kaiwa</span>
+                </div>
+            </div>
+            <a href="https://wa.me/628123456789" class="btn-batch">Daftar Kelas Malam</a>
+        </div>
+    </div>
+</section>
 
     <section id="alur">
         <div class="section-title">
@@ -1251,6 +1428,18 @@ function createPetal() {
 
 // Interval kemunculan kelopak
 setInterval(createPetal, 1000);
+
+// Mengambil elemen checkbox toggle dan semua link di dalam navigasi
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.querySelectorAll('nav ul li a');
+
+// Menambahkan event listener untuk setiap link
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        // Mengubah status checkbox menjadi tidak tercentang (menutup menu)
+        menuToggle.checked = false;
+    });
+});
 </Script>
 </body>
 </html>
