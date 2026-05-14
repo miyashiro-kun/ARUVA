@@ -1051,37 +1051,18 @@ nav ul {
     </section>
     
     
-    <section id="gallery" class="gallery-section">
+<section id="gallery" class="gallery-section">
     <div class="section-title">
-        <h2>Gallery</h2>
+        <h2>Gallery Kegiatan</h2>
         <div class="underline"></div>
     </div>
 
-    <div class="gallery-container" id="gallery-container">
-        <figure class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1528913122250-50df447c5f29?auto=format&fit=crop&q=80&w=800" alt="Suasana Kelas Bahasa">
-            <figcaption>Kelas Bahasa</figcaption>
-        </figure>
-        <figure class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" alt="Diskusi Persiapan Mensetsu">
-            <figcaption>Persiapan Mensetsu</figcaption>
-        </figure>
-        <figure class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1524178232363-1fb28f74b671?auto=format&fit=crop&q=80&w=800" alt="Fasilitas Belajar LPK">
-            <figcaption>Fasilitas Lab</figcaption>
-        </figure>
-        <figure class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?auto=format&fit=crop&q=80&w=800" alt="Alumni LPK di Jepang">
-            <figcaption>Alumni di Jepang</figcaption>
-        </figure>
-        <figure class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&q=80&w=800" alt="Kegiatan Fisik & Disiplin">
-            <figcaption>Kegiatan Fisik</figcaption>
-        </figure>
-        <figure class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1523240715639-99a2f050b1e1?auto=format&fit=crop&q=80&w=800" alt="Orientasi Siswa Baru">
-            <figcaption>Orientasi Siswa</figcaption>
-        </figure>
+    <div class="gallery-container" id="dynamic-gallery"></div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <button id="load-more-btn" class="btn-batch" style="cursor: pointer; border: none; padding: 12px 40px;">
+            Lihat Lainnya <i class="fas fa-chevron-down" style="margin-left: 8px;"></i>
+        </button>
     </div>
 </section>
 
@@ -1392,13 +1373,13 @@ galleryCards.forEach(img => {
 
 function createPetal() {
     const container = document.getElementById('sakura-container');
-    if (container.childElementCount > 15) return;
+    if (container.childElementCount > 7) return;
 
     const petal = document.createElement('div');
     petal.classList.add('petal');
 
     // Variasi ukuran
-    const size = Math.random() * 10 + 8 + 'px';
+    const size = Math.random() * 15 + 8 + 'px';
     petal.style.width = size;
     petal.style.height = size;
 
@@ -1417,7 +1398,6 @@ function createPetal() {
     
     // Opacity acak
     petal.style.opacity = Math.random() * 0.6 + 0.3;
-
     container.appendChild(petal);
 
     // Hapus setelah jatuh
@@ -1427,7 +1407,7 @@ function createPetal() {
 }
 
 // Interval kemunculan kelopak
-setInterval(createPetal, 1000);
+setInterval(createPetal, 2000);
 
 // Mengambil elemen checkbox toggle dan semua link di dalam navigasi
 const menuToggle = document.getElementById('menu-toggle');
@@ -1438,6 +1418,73 @@ navLinks.forEach(link => {
     link.addEventListener('click', () => {
         // Mengubah status checkbox menjadi tidak tercentang (menutup menu)
         menuToggle.checked = false;
+    });
+});
+
+// 1. Daftar nama file gambar Anda di folder img/gallery/
+// 1. Data gambar (isi sesuai nama file di folder img/gallery/)
+const images = [
+    { src: '1.jpg', title: 'Kegiatan Belajar Pagi' },
+    { src: '2.jpg', title: 'Latihan Kaiwa' },
+    { src: '3.jpg', title: 'Kunjungan Kumiai' },
+    { src: '4.jpg', title: 'Persiapan Dokumen' },
+    { src: '5.jpg', title: 'Olahraga Bersama' },
+    { src: '6.jpg', title: 'Makan Siang Asrama' },
+    { src: '7.jpg', title: 'Tes Kesehatan' },
+    { src: '8.jpg', title: 'Alumni di Narita' }
+];
+
+let currentIndex = 0;
+const imagesPerLoad = 4; // Jumlah default yang ditampilkan
+const galleryContainer = document.getElementById('dynamic-gallery');
+const loadMoreBtn = document.getElementById('load-more-btn');
+
+function renderNextImages() {
+    // Ambil potongan array gambar berikutnya
+    const nextBatch = images.slice(currentIndex, currentIndex + imagesPerLoad);
+    
+    nextBatch.forEach(imgData => {
+        const figure = document.createElement('figure');
+        figure.className = 'gallery-card';
+        // Animasi fade-in sederhana saat muncul
+        figure.style.opacity = '0';
+        figure.style.transition = 'opacity 0.5s ease-in-out';
+        
+        figure.innerHTML = `
+            <img src="img/gallery/${imgData.src}" alt="${imgData.title}" loading="lazy">
+            <figcaption>${imgData.title}</figcaption>
+        `;
+
+        // Event Klik Lightbox (Gunakan script lightbox Anda yang sudah ada)
+        figure.addEventListener('click', () => {
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightbox = document.getElementById('lightbox');
+            if(lightboxImg && lightbox) {
+                lightboxImg.src = `img/gallery/${imgData.src}`;
+                lightbox.classList.add('active');
+            }
+        });
+
+        galleryContainer.appendChild(figure);
+        
+        // Trigger animasi fade-in
+        setTimeout(() => figure.style.opacity = '1', 10);
+    });
+
+    currentIndex += imagesPerLoad;
+
+    // Sembunyikan tombol jika semua gambar sudah ditampilkan
+    if (currentIndex >= images.length) {
+        loadMoreBtn.style.display = 'none';
+    }
+}
+
+// Jalankan saat pertama kali halaman dimuat
+document.addEventListener('DOMContentLoaded', () => {
+    renderNextImages();
+    
+    loadMoreBtn.addEventListener('click', () => {
+        renderNextImages();
     });
 });
 </Script>
