@@ -949,6 +949,92 @@ nav ul {
     }
 }
 
+
+/* --- SECTION: ALUR KEBERANGKATAN --- */
+.process-section {
+    padding: 80px 5%;
+    background-color: var(--sakura-pink-light);
+}
+
+.process-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+    position: relative;
+}
+
+.process-step {
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+}
+
+.step-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--sakura-red-accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    position: relative;
+}
+
+.step-number {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--text-dark);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+
+.step-content h3 {
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.step-content p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Garis penghubung sederhana untuk desktop */
+@media (min-width: 1024px) {
+    .process-container::before {
+        content: "";
+        position: absolute;
+        top: 60px;
+        left: 50px;
+        right: 50px;
+        height: 2px;
+        background: var(--sakura-pink-primary);
+        z-index: 0;
+        display: none; /* Aktifkan jika ingin garis menyambung */
+    }
+}
+
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -1155,7 +1241,7 @@ nav ul {
     </div>
 </section>
 
-    <section id="alur">
+    <section style="visibility:hidden;height:0px" id="alur">
         <div class="section-title">
             <h2>Alur Keberangkatan</h2>
             <div class="underline"></div>
@@ -1215,6 +1301,83 @@ nav ul {
         </div>
     </section>
     
+    
+    <section  id="process" class="process-section">
+    <div class="section-title">
+        <h2>Alur Keberangkatan</h2>
+        <div class="underline"></div>
+        <p>Proses terukur dari awal pendaftaran hingga terbang ke Jepang</p>
+    </div>
+
+    <div class="process-container">
+        <div class="process-step">
+            <div class="step-icon">
+                <i class="fas fa-edit"></i>
+                <span class="step-number">1</span>
+            </div>
+            <div class="step-content">
+                <h3>Pendaftaran LPK</h3>
+                <p>Pengisian formulir pendaftaran dan seleksi administrasi di kantor Aruva.</p>
+            </div>
+        </div>
+
+        <div class="process-step">
+            <div class="step-icon">
+                <i class="fas fa-book-open"></i>
+                <span class="step-number">2</span>
+            </div>
+            <div class="step-content">
+                <h3>Pendidikan Bahasa</h3>
+                <p>Pelatihan intensif bahasa Jepang (N5 - N4) dengan metode praktis.</p>
+            </div>
+        </div>
+
+        <div class="process-step">
+            <div class="step-icon">
+                <i class="fas fa-file-signature"></i>
+                <span class="step-number">3</span>
+            </div>
+            <div class="step-content">
+                <h3>Ujian Kualifikasi</h3>
+                <p>Mengikuti ujian resmi (JLPT/JFT & SSW) untuk mendapatkan sertifikat keahlian.</p>
+            </div>
+        </div>
+
+        <div class="process-step">
+            <div class="step-icon">
+                <i class="fas fa-passport"></i>
+                <span class="step-number">4</span>
+            </div>
+            <div class="step-content">
+                <h3>Pengurusan Dokumen</h3>
+                <p>Proses COE, paspor, dan dokumen resmi lainnya jika dinyatakan lulus & fit.</p>
+            </div>
+        </div>
+
+        <div class="process-step">
+            <div class="step-icon">
+                <i class="fas fa-torii-gate"></i>
+                <span class="step-number">5</span>
+            </div>
+            <div class="step-content">
+                <h3>Pemantapan Budaya</h3>
+                <p>Pembekalan disiplin kerja (*Choure*) dan pengenalan budaya hidup di Jepang.</p>
+            </div>
+        </div>
+
+        <div class="process-step">
+            <div class="step-icon">
+                <i class="fas fa-plane-departure"></i>
+                <span class="step-number">6</span>
+            </div>
+            <div class="step-content">
+                <h3>Pendaftaran JOB</h3>
+                <p>Wawancara dengan user/perusahaan Jepang dan keberangkatan kerja.</p>
+            </div>
+        </div>
+    </div>
+</section>
+    
     <section id="testimoni">
     <div class="section-title">
         <h2>Pesan dari Alumni</h2>
@@ -1225,6 +1388,9 @@ nav ul {
         <div id="testi-marquee" class="marquee-container"></div>
     </div>
 </section>
+
+
+
 
     <footer id="kontak">
         <div class="footer-container">
