@@ -67,19 +67,27 @@
     }
     
     /* Menargetkan semua elemen interaktif */
-  /* Menghilangkan highlight secara universal pada semua elemen interaktif */
-a, button, input, label, select, textarea, [onclick], [data-key], .lang-main, .lang-item {
-    -webkit-tap-highlight-color: transparent !important;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-    outline: none !important;
-    user-select: none;
-}
-
-/* Menghilangkan border fokus saat elemen diklik (Desktop) */
-*:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
+    a, 
+    button, 
+    input, 
+    textarea, 
+    select,
+    .btn-custom { /* tambahkan class khusus jika perlu */
+        
+        /* 1. Menghilangkan kotak biru di Chrome/Safari/Opera (Android & iOS) */
+        -webkit-tap-highlight-color: transparent;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    
+        /* 2. Menghilangkan garis outline saat fokus (sering muncul di Firefox/Desktop) */
+        outline: none;
+    
+        /* 3. Mencegah teks terpilih secara tidak sengaja saat ditekan lama (Long Press) */
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none;   /* Safari */
+        -moz-user-select: none;      /* Firefox */
+        -ms-user-select: none;       /* Internet Explorer/Edge */
+        user-select: none;           /* Standard syntax */
+    }
     
     #desktop-cta {
         margin-left: auto;
@@ -1159,7 +1167,7 @@ a, button, input, label, select, textarea, [onclick], [data-key], .lang-main, .l
 
   <section id="program">
     <div class="section-title">
-      <h2 data-key="">Program Unggulan</h2>
+      <h2 data-key="program-title">Program Unggulan</h2>
       <div class="underline"></div>
     </div>
 
@@ -1168,37 +1176,37 @@ a, button, input, label, select, textarea, [onclick], [data-key], .lang-main, .l
       <div class="program-card">
         <div class="program-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdSVPRPmCSNzv9PJAI41DFyyuN3kX5Z3lvybMvBrlrt1ObJH4AAiGOT787&s=10" alt="Caregiver"></div>
         <div class="program-content">
-          <h3 data-key="">Ikusei Suro</h3>
-          <p data-key="">.....</p>
+          <h3 data-key="program-1-title">Ikusei Suro</h3>
+          <p data-key="program-2-title">.....</p>
         </div>
       </div>
       <div class="program-card">
         <div class="program-img"><img src="https://cdn-web-2.ruangguru.com/landing-pages/assets/2c2a67de-34c1-4347-8c78-5affa9115f82.png?convert=webp" alt="Caregiver"></div>
         <div class="program-content">
-          <h3 data-key="">Tokutei Ginou</h3>
-          <p data-key="">....</p>
+          <h3 data-key="program-2-title">Tokutei Ginou</h3>
+          <p data-key="program--title">....</p>
         </div>
       </div>
 
       <div class="program-card">
         <div class="program-img"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="Konstruksi"></div>
         <div class="program-content">
-          <h3 data-key="">Konstruksi</h3>
-          <p data-key="">Berperan dalam pembangunan infrastruktur modern di kota-kota besar seperti Tokyo dan Osaka.</p>
+          <h3 data-key="program-3-title">Konstruksi</h3>
+          <p data-key="program-3-desc">Berperan dalam pembangunan infrastruktur modern di kota-kota besar seperti Tokyo dan Osaka.</p>
         </div>
       </div>
       <div class="program-card">
         <div class="program-img"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="Pertanian"></div>
         <div class="program-content">
-          <h3 data-key="">Pertanian</h3>
-          <p data-key="">Mempelajari teknologi budidaya tanaman modern di Prefektur Nagano yang asri.</p>
+          <h3 data-key="program-4-title">Pertanian</h3>
+          <p data-key="program-4-desc">Mempelajari teknologi budidaya tanaman modern di Prefektur Nagano yang asri.</p>
         </div>
       </div>
       <div class="program-card">
         <div class="program-img"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="Caregiver"></div>
         <div class="program-content">
-          <h3 data-key="">Caregiver</h3>
-          <p data-key="">Berdedikasi melayani lansia dengan teknologi dan standar hospitality tinggi khas Jepang.</p>
+          <h3 data-key="program-5-title">Caregiver</h3>
+          <p data-key="program-4-desc">Berdedikasi melayani lansia dengan teknologi dan standar hospitality tinggi khas Jepang.</p>
         </div>
       </div>
     </div>
@@ -1206,14 +1214,14 @@ a, button, input, label, select, textarea, [onclick], [data-key], .lang-main, .l
 
   <section id="gallery" class="gallery-section">
     <div class="section-title">
-      <h2 data-key="">Gallery Kegiatan</h2>
+      <h2 data-key="gallery-title">Gallery Kegiatan</h2>
       <div class="underline"></div>
     </div>
 
     <div class="gallery-container" id="dynamic-gallery"></div>
 
     <div style="text-align: center; margin-top: 30px;">
-      <button data-key="" id="load-more-btn" class="btn-batch" style="cursor: pointer; border: none; padding: 12px 40px;">
+      <button data-key="gallery-btn" id="load-more-btn" class="btn-batch" style="cursor: pointer; border: none; padding: 12px 40px;">
         Lihat Lainnya <i class="fas fa-chevron-down" style="margin-left: 8px;"></i>
       </button>
     </div>
@@ -1225,29 +1233,29 @@ a, button, input, label, select, textarea, [onclick], [data-key], .lang-main, .l
 
   <section id="pricing-facility">
     <div class="section-title">
-      <h2 data-key="">Pendaftaran</h2>
+      <h2 data-key="price-section-title">Pendaftaran</h2>
       <div class="underline"></div>
     </div>
 
     <div class="pricing-container">
       <div class="price-card">
-        <h4 data-key="">Biaya Awal</h4>
-        <div class="price-amount">Rp 3.000.000</div>
-        <p data-key="" style="font-size: 0.8rem; color: #999; margin-top: 10px;">*Syarat dan ketentuan berlaku</p>
+        <h4 data-key="price-label">Biaya Awal</h4>
+        <div data-key="price-amount" class="price-amount">Rp 3.000.000</div>
+        <p data-key="price-note" style="font-size: 0.8rem; color: #999; margin-top: 10px;">*Syarat dan ketentuan berlaku</p>
       </div>
 
       <div class="facility-card">
-        <h3 data-key="">Fasilitas yang Didapatkan:</h3>
+        <h3 data-key="facility-title">Fasilitas yang Didapatkan:</h3>
         <ul class="facility-list">
-          <li data-key="">Pembelajaran Bahasa Jepang</li>
-          <li data-key="">Buku Pelajaran</li>
-          <li data-key="">Outfit / Seragam</li>
-          <li data-key="">Pembinaan Mensetsu</li>
-          <li data-key="">Ruang Kelas Nyaman</li>
-          <li data-key="">Konsultasi Karir</li>
+          <li data-key="fac-1">Pembelajaran Bahasa Jepang</li>
+          <li data-key="fac-2">Buku Pelajaran</li>
+          <li data-key="fac-3">Outfit / Seragam</li>
+          <li data-key="fac-4">Pembinaan Mensetsu</li>
+          <li data-key="fac-5">Ruang Kelas Nyaman</li>
+          <li data-key="fac-6">Konsultasi Karir</li>
         </ul>
         <div style="margin-top: 30px;">
-          <a data-key="" href="https://wa.me/628123456789" class="btn-cta" style="width: 100%; text-align: center;">Tanya Detail Biaya</a>
+          <a data-key="fac-btn" href="https://wa.me/628123456789" class="btn-cta" style="width: 100%; text-align: center;">Tanya Detail Biaya</a>
         </div>
       </div>
     </div>
@@ -1255,16 +1263,16 @@ a, button, input, label, select, textarea, [onclick], [data-key], .lang-main, .l
 
   <section id="batch">
     <div class="section-title">
-      <h2 data-key="">Batch Pendaftaran Terbaru</h2>
+      <h2 data-key="batch-title">Batch Pendaftaran Terbaru</h2>
       <div class="underline"></div>
     </div>
 
     <div class="batch-container">
       <div class="batch-card">
-        <div data-key="" class="batch-status status-open">Tersedia</div>
+        <div data-key="batch-status" class="batch-status status-open">Tersedia</div>
         <div class="batch-header">
-          <h3 data-key="">Kelas Pagi</h3>
-          <p data-key="">Program Intensif Harian</p>
+          <h3 data-key="batch-pagi-title">Kelas Pagi</h3>
+          <p data-key="batch-pagi-desc">Program Intensif Harian</p>
         </div>
         <div class="batch-body">
           <div class="batch-info">
@@ -1286,8 +1294,8 @@ a, button, input, label, select, textarea, [onclick], [data-key], .lang-main, .l
       <div class="batch-card">
         <div data-key="" class="batch-status status-open">Tersedia</div>
         <div class="batch-header">
-          <h3 data-key="">Kelas Malam</h3>
-          <p data-key="">Program Pekerja & Mahasiswa</p>
+          <h3 data-key="batch-malam-title">Kelas Malam</h3>
+          <p data-key="batch-malam-desc">Program Pekerja & Mahasiswa</p>
         </div>
         <div class="batch-body">
           <div class="batch-info">
