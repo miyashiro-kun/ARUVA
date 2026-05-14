@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayasan Aruva - LPK bengaku Mandiri </title>
+    <title>Yayasan Aruva - LPK Bengagaku Mandiri | Sakura Theme</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         /* --- 1. CSS RESET & VARIABEL TEMA SAKURA --- */
         * {
@@ -599,11 +600,132 @@ nav ul {
         padding: 20px;
     }
 }
+.fab-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.fab-checkbox { display: none; }
+
+/* Tombol Utama */
+.fab-main {
+    width: 60px;
+    height: 60px;
+    background: var(--sakura-red-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 10px 25px rgba(211, 47, 47, 0.4);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 2;
+    position: relative;
+}
+
+.fab-main i { position: absolute; transition: all 0.4s; }
+.fab-main .fa-times { opacity: 0; transform: rotate(-90deg); }
+
+/* List Menu Sosmed */
+.fab-list {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    pointer-events: none; /* Mati saat tertutup */
+}
+
+.fab-item {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(20px) scale(0);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+/* Tooltip Label */
+.fab-item::before {
+    content: attr(data-label);
+    position: absolute;
+    right: 70px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    transition: 0.3s;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.fab-item:hover::before { opacity: 1; }
+
+/* Animasi Saat Checkbox Dicentang (DIBUKA) */
+.fab-checkbox:checked ~ .fab-main {
+    background: #333;
+    transform: rotate(180deg);
+}
+.fab-checkbox:checked ~ .fab-main .fa-comment-dots { opacity: 0; transform: rotate(90deg); }
+.fab-checkbox:checked ~ .fab-main .fa-times { opacity: 1; transform: rotate(0); }
+
+.fab-checkbox:checked ~ .fab-list { pointer-events: auto; }
+.fab-checkbox:checked ~ .fab-list .fab-item {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Staggered Delay (Satu-satu munculnya) */
+.fab-list .fab-item:nth-child(1) { transition-delay: 0.1s; background: #25d366; } /* WA */
+.fab-list .fab-item:nth-child(2) { transition-delay: 0.2s; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); } /* IG */
+.fab-list .fab-item:nth-child(3) { transition-delay: 0.3s; background: #000; } /* TikTok */
+
+/* Mobile Adjustment */
+@media (max-width: 768px) {
+    .fab-container { bottom: 20px; right: 20px; }
+    .fab-main { width: 55px; height: 55px; }
+}
+
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="fab-container">
+    <input type="checkbox" id="fab-checkbox" class="fab-checkbox">
+    
+    <label for="fab-checkbox" class="fab-main">
+        <i class="fas fa-comment-dots"></i>
+        <i class="fas fa-times"></i>
+    </label>
 
+    <div class="fab-list">
+        <a href="https://wa.me/628xxxxxxx" class="fab-item wa" data-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://instagram.com/username" class="fab-item ig" data-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@username" class="fab-item tiktok" data-label="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+        </a>
+    </div>
+</div>
     <nav>
         <div class="flex-container" style="display: flex;">
         <img src="img/logo.jpg" style="align-self: flex-start;width:50px;height:50px;radius:90%;">
@@ -612,7 +734,7 @@ nav ul {
             <div class="logo-wrapper">
                 <span class="brand-primary">ARUVA</span>
                 <span class="divider">|</span>
-                <span class="brand-secondary">bengaku MANDIRI</span>
+                <span class="brand-secondary">BENGAGAKU MANDIRI</span>
             </div>
             <small>YAYASAN ARUVA</small>
         </a>
@@ -636,7 +758,7 @@ nav ul {
 
     <section id="home" class="hero">
         <h1>Masa Depanmu di Negeri Sakura</h1>
-        <p>LPK bengaku Mandiri membantu pemuda Indonesia meraih karir impian di Jepang melalui pelatihan bahasa dan mentalitas yang unggul.</p>
+        <p>LPK Bengagaku Mandiri membantu pemuda Indonesia meraih karir impian di Jepang melalui pelatihan bahasa dan mentalitas yang unggul.</p>
         <a href="#alur" class="btn-cta">Mulai Perjalananmu</a>
    
         <div class="custom-shape-divider-bottom">
@@ -778,12 +900,27 @@ nav ul {
         <div id="testi-marquee" class="marquee-container"></div>
     </div>
 </section>
-
+<div class="social-stack">
+    <a href="https://www.tiktok.com/@username_kamu" class="float-btn tiktok" target="_blank">
+        <img src="https://www.edigitalagency.com.au/wp-content/uploads/tiktok-logo-white-png.png" alt="TikTok">
+        <span class="label">TikTok</span>
+    </a>
+    
+    <a href="https://www.instagram.com/username_kamu" class="float-btn ig" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        <span class="label">Instagram</span>
+    </a>
+    
+    <a href="https://wa.me/628xxxxxxx" class="float-btn wa" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span class="label">Tanya Admin</span>
+    </a>
+</div>
     <footer id="kontak">
         <div class="footer-container">
             <div class="footer-col">
                 <h4 style="color: var(--sakura-pink-primary);">Yayasan Aruva</h4>
-                <p style="font-size: 0.9rem; color: #999; line-height: 1.8;">LPK bengaku Mandiri berdedikasi menciptakan SDM berkualitas, berkarakter, dan siap bersaing di pasar kerja internasional, khususnya Jepang.</p>
+                <p style="font-size: 0.9rem; color: #999; line-height: 1.8;">LPK Bengagaku Mandiri berdedikasi menciptakan SDM berkualitas, berkarakter, dan siap bersaing di pasar kerja internasional, khususnya Jepang.</p>
             </div>
             <div class="footer-col footer-links">
                 <h4>Program</h4>
@@ -814,17 +951,17 @@ nav ul {
                     </li>
                     <li>
                         <span class="contact-info-icon">📧</span>
-                        <span>admin@aruva-bengaku.com</span>
+                        <span>admin@aruva-bengagaku.com</span>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 <strong>Yayasan Aruva bengaku Mandiri</strong>. All Rights Reserved.</p>
+            <p>&copy; 2026 <strong>Yayasan Aruva Bengagaku Mandiri</strong>. All Rights Reserved.</p>
             <p>Izin LPK No: 123/DITJEN-BINALATTAS/2026</p>
         </div>
     </footer>
-
+    
     <script>
         const stepData = {
             1: {
