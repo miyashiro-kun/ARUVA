@@ -348,6 +348,184 @@ nav ul {
             .footer-container { grid-template-columns: 1fr; gap: 30px; }
             .footer-bottom { flex-direction: column; text-align: center; gap: 15px; }
         }
+        
+        
+        /* --- SECTION: BIAYA & FASILITAS --- */
+        #pricing-facility {
+            background-color: var(--sakura-pink-light);
+            padding: 80px 10%;
+        }
+
+        .pricing-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+
+        .price-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px dashed var(--sakura-pink-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(255, 183, 197, 0.15);
+        }
+
+        .price-card h4 {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--sakura-red-accent);
+        }
+
+        .facility-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .facility-card h3 {
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            border-left: 5px solid var(--sakura-red-accent);
+            padding-left: 15px;
+        }
+
+        .facility-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            list-style: none;
+        }
+
+        .facility-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .facility-list li::before {
+            content: '🌸'; /* Icon Sakura sebagai bullet point */
+            font-size: 1rem;
+        }
+
+        /* Responsive untuk section ini */
+        @media (max-width: 768px) {
+            .pricing-container {
+                grid-template-columns: 1fr;
+            }
+            .facility-list {
+                grid-template-columns: 1fr;
+            }
+            .price-amount {
+                font-size: 2rem;
+            }
+        }
+        
+        /* --- SECTION: TESTIMONI MARQUEE --- */
+        #testimoni {
+            background-color: var(--white);
+            padding: 80px 0; /* Padding atas bawah saja, biarkan lebar penuh untuk efek marquee */
+            overflow: hidden;
+        }
+
+        .marquee-container {
+            display: flex;
+            width: fit-content;
+            animation: scroll 40s linear infinite; /* Kecepatan gerak */
+        }
+
+        /* Hover untuk menjeda gerakan saat dibaca */
+        .marquee-container:hover {
+            animation-play-state: paused;
+        }
+
+        .testi-card {
+            min-width: 350px;
+            max-width: 350px;
+            background: var(--sakura-pink-light);
+            margin: 0 15px;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--sakura-pink-primary);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .testi-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testi-profile img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--sakura-red-accent);
+        }
+
+        .testi-info h4 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .testi-info span {
+            font-size: 0.8rem;
+            color: var(--sakura-red-accent);
+            font-weight: 600;
+        }
+
+        .testi-quote {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .testi-quote::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--sakura-pink-primary);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.5;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-380px * 10)); } /* 350px width + 30px margin total */
+        }
+
+        @media (max-width: 768px) {
+            .testi-card { min-width: 280px; padding: 20px; }
+            @keyframes scroll {
+                100% { transform: translateX(calc(-310px * 10)); }
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -426,6 +604,36 @@ nav ul {
             </div>
         </div>
     </section>
+    
+    <section id="pricing-facility">
+        <div class="section-title">
+            <h2>Pendaftaran</h2>
+            <div class="underline"></div>
+        </div>
+
+        <div class="pricing-container">
+            <div class="price-card">
+                <h4>Biaya Awal</h4>
+                <div class="price-amount">Rp 3.000.000</div>
+                <p style="font-size: 0.8rem; color: #999; margin-top: 10px;">*Syarat dan ketentuan berlaku</p>
+            </div>
+
+            <div class="facility-card">
+                <h3>Fasilitas yang Didapatkan:</h3>
+                <ul class="facility-list">
+                    <li>Pembelajaran Bahasa Jepang</li>
+                    <li>Buku Pelajaran</li>
+                    <li>Outfit / Seragam</li>
+                    <li>Pembinaan Mensetsu</li>
+                    <li>Ruang Kelas Nyaman</li>
+                    <li>Konsultasi Karir</li>
+                </ul>
+                <div style="margin-top: 30px;">
+                    <a href="https://wa.me/628123456789" class="btn-cta" style="width: 100%; text-align: center;">Tanya Detail Biaya</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="alur">
         <div class="section-title">
@@ -482,6 +690,123 @@ nav ul {
                 <div class="m-step">
                     <div class="m-num">5</div>
                     <div class="m-text"><strong>Keberangkatan:</strong> Pelepasan resmi dan terbang menuju Jepang.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="testimoni">
+        <div class="section-title">
+            <h2>Pesan dari Alumni</h2>
+            <div class="underline"></div>
+        </div>
+
+        <div style="width: 100%; overflow: hidden;">
+            <div class="marquee-container">
+                <div class="testi-card">
+                    <div class="testi-profile">
+                        <img src="https://i.pravatar.cc/150?u=1" alt="Alumni">
+                        <div class="testi-info">
+                            <h4>Septian Adi</h4>
+                            <span>Nagoya, Jepang</span>
+                        </div>
+                    </div>
+                    <p class="testi-quote">Berkat LPK ini, saya bisa bekerja di bidang manufaktur dengan lancar. Pelatihan bahasanya sangat aplikatif!</p>
+                </div>
+
+                <div class="testi-card">
+                    <div class="testi-profile">
+                        <img src="https://i.pravatar.cc/150?u=2" alt="Alumni">
+                        <div class="testi-info">
+                            <h4>Rina Wijaya</h4>
+                            <span>Osaka, Jepang</span>
+                        </div>
+                    </div>
+                    <p class="testi-quote">Mentalitas yang diajarkan selama Diklat sangat membantu saat menghadapi tantangan kerja di negeri Sakura.</p>
+                </div>
+
+                <div class="testi-card">
+                    <div class="testi-profile">
+                        <img src="https://i.pravatar.cc/150?u=3" alt="Alumni">
+                        <div class="testi-info">
+                            <h4>Arif Budiman</h4>
+                            <span>Tokyo, Jepang</span>
+                        </div>
+                    </div>
+                    <p class="testi-quote">Proses COE dan Visa sangat transparan dan cepat. Terima kasih Yayasan Aruva atas bimbingannya!</p>
+                </div>
+
+                <div class="testi-card">
+                    <div class="testi-profile">
+                        <img src="https://i.pravatar.cc/150?u=4" alt="Alumni">
+                        <div class="testi-info">
+                            <h4>Sari Fitriani</h4>
+                            <span>Fukuoka, Jepang</span>
+                        </div>
+                    </div>
+                    <p class="testi-quote">Fasilitas asrama sangat nyaman, membuat saya bisa fokus belajar bahasa Jepang sampai level N4.</p>
+                </div>
+
+                <div class="testi-card">
+                    <div class="testi-profile">
+                        <img src="https://i.pravatar.cc/150?u=5" alt="Alumni">
+                        <div class="testi-info">
+                            <h4>Budi Santoso</h4>
+                            <span>Chiba, Jepang</span>
+                        </div>
+                    </div>
+                    <p class="testi-quote">Bagi teman-teman di Pekalongan dan Batang, jangan ragu daftar di sini. Mentornya sangat profesional.</p>
+                </div>
+
+                <div class="testi-card">
+                    <div class="testi-profile">
+                        <img src="https://i.pravatar.cc/150?u=1" alt="Alumni">
+                        <div class="testi-info">
+                            <h4>Septian Adi</h4>
+                            <span>Nagoya, Jepang</span>
+                        </div>
+                    </div>
+                    <p class="testi-quote">Berkat LPK ini, saya bisa bekerja di bidang manufaktur dengan lancar. Pelatihan bahasanya sangat aplikatif!</p>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-profile">
+                        <img src="https://i.pravatar.cc/150?u=2" alt="Alumni">
+                        <div class="testi-info">
+                            <h4>Rina Wijaya</h4>
+                            <span>Osaka, Jepang</span>
+                        </div>
+                    </div>
+                    <p class="testi-quote">Mentalitas yang diajarkan selama Diklat sangat membantu saat menghadapi tantangan kerja di negeri Sakura.</p>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-profile">
+                        <img src="https://i.pravatar.cc/150?u=3" alt="Alumni">
+                        <div class="testi-info">
+                            <h4>Arif Budiman</h4>
+                            <span>Tokyo, Jepang</span>
+                        </div>
+                    </div>
+                    <p class="testi-quote">Proses COE dan Visa sangat transparan dan cepat. Terima kasih Yayasan Aruva atas bimbingannya!</p>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-profile">
+                        <img src="https://i.pravatar.cc/150?u=4" alt="Alumni">
+                        <div class="testi-info">
+                            <h4>Sari Fitriani</h4>
+                            <span>Fukuoka, Jepang</span>
+                        </div>
+                    </div>
+                    <p class="testi-quote">Fasilitas asrama sangat nyaman, membuat saya bisa fokus belajar bahasa Jepang sampai level N4.</p>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-profile">
+                        <img src="https://i.pravatar.cc/150?u=5" alt="Alumni">
+                        <div class="testi-info">
+                            <h4>Budi Santoso</h4>
+                            <span>Chiba, Jepang</span>
+                        </div>
+                    </div>
+                    <p class="testi-quote">Bagi teman-teman di Pekalongan dan Batang, jangan ragu daftar di sini. Mentornya sangat profesional.</p>
                 </div>
             </div>
         </div>
